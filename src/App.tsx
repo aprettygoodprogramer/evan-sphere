@@ -1,5 +1,5 @@
-import ListGroup from './components/ListGroup';
-import DropDown from './components/dropdown'
+import ListGroup from './comp/ListGroup';
+import DropDown from './comp/dropdown';
 
 function App()
 {
