@@ -1,4 +1,7 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Font1&family=Font2&display=swap');
+
+
  @keyframes tracking-in-contract-bck {
     0% {
       letter-spacing: 1em;
@@ -29,9 +32,15 @@
     position: absolute;
     inset: 0;
     margin: auto;
-    
+    font-family: 'Font2', serif;
     text-align: center;
-    animation: tracking-in-contract-bck 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-contract-bck 4s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  }
+  .p1 {    
+    inset: 0;
+    margin: auto;
+    text-align: justify;
+    animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
   
   .page-background {
@@ -41,9 +50,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /*Explain This Line
-    
 
-    */
     animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #61dafb;
   }

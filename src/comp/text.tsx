@@ -16,7 +16,7 @@ interface TextProps {
     fontFamily
   }) => {
     const styles = {
-      fontSize: size === 'small' ? '12px' : size === 'large' ? '20px' : '16px',
+      fontSize: size === 'small' ? '12px' : size === 'large' ? '40px' : '16px',
       fontWeight: weight,
       color,
       fontFamily, 
