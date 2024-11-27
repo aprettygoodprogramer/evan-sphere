@@ -1,9 +1,9 @@
-import React from "react";
-import ListGroup from "./comp/ListGroup";
-import DropDown from "./comp/dropdown";
+//simport React from "react";
+//import ListGroup from "./comp/ListGroup";
+//import DropDown from "./comp/dropdown";
 import Text from "./comp/text";
 import GitHubLink from "./comp/GithubBut";
-import "./app.css";
+import "./App.css";
 
 function App() {
   return (

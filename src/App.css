@@ -53,11 +53,3 @@
 
     animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
-  .github-button {
-
-  }
-  
-  .github-button:hover {
-    background-color: #444;
-  }
-  
