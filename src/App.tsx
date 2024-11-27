@@ -12,7 +12,7 @@ function App() {
         Welcome To Evan-Sphere
       </Text>
       <Text size="medium" weight="bold" color="white" className="p1">
-        Welcome To Evan-Sphere. This Website is Under Construction.
+        Welcome To Evan-Sphere. This Website is Under Construction. It will inevitably Become a website to host all of my projects.
       </Text>
       <GitHubLink />
     </div>
