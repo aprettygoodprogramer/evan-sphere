@@ -53,11 +53,19 @@
 
     animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
-  a {
-    color: inherit;
+  .github-button {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
   }
   
-  a:hover {
-    color: #61dafb;
+  .github-button:hover {
+    background-color: #444;
   }
+  

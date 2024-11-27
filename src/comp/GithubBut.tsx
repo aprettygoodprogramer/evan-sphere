@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 const GithubButton: React.FC = () => {
   return (
     <a
-      href="https://github.com/your-username"
+      href="https://github.com/aprettygoodprogramer"
       target="_blank"
       rel="noopener noreferrer"
       className="github-button"
