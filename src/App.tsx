@@ -1,4 +1,4 @@
-//simport React from "react";
+import React from "react";
 //import ListGroup from "./comp/ListGroup";
 //import DropDown from "./comp/dropdown";
 import Text from "./comp/text";
@@ -14,7 +14,7 @@ function App() {
       <Text size="medium" weight="bold" color="white" className="p1">
         Welcome To Evan-Sphere. This Website is Under Construction.
       </Text>
-      <GitHubLink url="https://github.com/aprettygoodprogramer"/>
+      <GitHubLink />
     </div>
   );
 }

@@ -1,25 +1,29 @@
-// src/components/GitHubLink.tsx
+import React from "react";
+import { FaGithub } from "react-icons/fa";
+import "../App.css";
 
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
-interface GitHubLinkProps {
-  url: string;  // The GitHub profile URL
-}
-
-const GitHubLink: React.FC<GitHubLinkProps> = ({ url }) => {
+const GithubButton: React.FC = () => {
   return (
-    <a 
-      href={url} 
-      target="_blank" 
+    <a
+      href="https://github.com/aprettygoodprogramer " 
+      target="_blank"
       rel="noopener noreferrer"
-      style={{ textDecoration: 'none', color: 'inherit' }} // Optional styling
+      className="github-button"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        textDecoration: "none",
+        backgroundColor: "#333",
+        color: "white",
+        padding: "8px 12px",
+        borderRadius: "5px",
+        fontSize: "16px",
+        transition: "background-color 0.3s",
+      }}
     >
-      <FontAwesomeIcon icon={faGithub} size="2x" />
+      <FaGithub style={{ marginRight: "8px" }} /> GitHub
     </a>
   );
 };
 
-export default GitHubLink;
-
+export default GithubButton;
