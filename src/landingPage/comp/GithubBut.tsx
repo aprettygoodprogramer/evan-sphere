@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import "../App.css";
+
 
 const GithubButton: React.FC = () => {
   return (

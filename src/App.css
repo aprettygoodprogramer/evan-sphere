@@ -56,7 +56,7 @@
 .github-button {
   background: linear-gradient(to right, black, #121222);
   padding: 10px 20px;
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   border: none;
   border-radius: 5px;
@@ -64,13 +64,11 @@
   animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-.hang-button {
-  background: linear-gradient(to right, black, #121222);
-  padding: 10px 20px;
-  color: white;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+.github-button a {
+  color: inherit; 
+  text-decoration: none; 
+  display: block; 
+  width: 100%; 
+  height: 100%; 
+  
 }
