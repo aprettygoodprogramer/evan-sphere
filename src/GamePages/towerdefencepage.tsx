@@ -7,11 +7,11 @@ const towerDefence = () => {
     <div className="page-background">
       <Outlet />
       <div className="game-container">
-        <iframe
-          src="/towerDefence/index.html"
-          className="game-frame"
-          title="Unity Game"
-        />
+        <iframe src="https://itch.io/embed/2237383" width="552" height="167">
+          <a href="https://slimybridge.itch.io/super-defender-td">
+            Super Defender TD by SlimyBridge
+          </a>
+        </iframe>
       </div>
 
       <Text size="medium" weight="bold" color="white" className="game-text">

@@ -7,11 +7,11 @@ const SpaceshipGamea = () => {
     <div className="page-background">
       <Outlet />
       <div className="game-container">
-        <iframe
-          src="/unityGame/index.html"
-          className="game-frame"
-          title="Unity Game"
-        />
+        <iframe src="https://itch.io/embed/2928092" width="552" height="167">
+          <a href="https://slimybridge.itch.io/space-adventure">
+            Space Adventure by SlimyBridge
+          </a>
+        </iframe>
       </div>
 
       <Text size="medium" weight="bold" color="white" className="game-text">
