@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import '../LetterInput.css';
+import './letterInput.css';
 
 interface LetterInputProps {
   onSubmit: (letter: string) => void;
