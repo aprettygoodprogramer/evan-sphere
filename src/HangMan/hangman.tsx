@@ -1,27 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Text from "../comp/text";
-import GitHubLink from "../landingPage/comp/GithubBut";
 import { Outlet, Link } from "react-router-dom";
-import "../App.css";
 import TextField from "./comp/singleLetterInput";
+import words from "./wordlist.json";
+import "../App.css";
 
-function Console() {
-  console.warn("usertpyed letter");
+function GetRandomWord() {
+  const randomIndex = Math.floor(Math.random() * words.length);
+  return words[randomIndex];
 }
+
 function HangMan() {
+  const [word, setWord] = useState<string>("");
+
+  const handleWordSubmit = () => {
+    const randomWord = GetRandomWord();
+    setWord(randomWord);
+  };
+
   return (
     <a className="page-background">
       <Text size="large" weight="bold" color="white" className="h1">
-        Welcome To Hang Man!{" "}
+        {word || "Your Word Here"}
       </Text>
 
-      <TextField onSubmit={Console} />
+      <TextField onSubmit={handleWordSubmit} />
+
       <div className="button-container">
         <button className="github-button">
           <Link to="/">back to home page</Link>
           <Outlet />
         </button>
       </div>
+
       <Outlet />
     </a>
   );

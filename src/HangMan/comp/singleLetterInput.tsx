@@ -1,12 +1,12 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import './letterInput.css';
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import "./letterInput.css";
 
 interface LetterInputProps {
-  onSubmit: (letter: string) => void;
+  onSubmit: () => void;
 }
 
 const LetterInput: React.FC<LetterInputProps> = ({ onSubmit }) => {
-  const [letter, setLetter] = useState<string>('');
+  const [letter, setLetter] = useState<string>("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -18,28 +18,25 @@ const LetterInput: React.FC<LetterInputProps> = ({ onSubmit }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (letter) {
-      onSubmit(letter);
-      setLetter('');
+      onSubmit();
+      setLetter("");
     }
   };
 
   return (
-    <div className="centered-container">
-
-        <input
-          type="text"
-          className="styled-input"
-          defaultValue={letter}
-          onChange={handleInputChange}
-          placeholder="A"
-          maxLength={1}
-          
-        />
-        <button type="submit" className="styled-button">
-          Submit
-        </button>
-      
-    </div>
+    <form onSubmit={handleSubmit} className="centered-container">
+      <input
+        type="text"
+        className="styled-input"
+        value={letter}
+        onChange={handleInputChange}
+        placeholder="A"
+        maxLength={1}
+      />
+      <button type="submit" className="styled-button">
+        Submit
+      </button>
+    </form>
   );
 };
 
