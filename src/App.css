@@ -101,3 +101,10 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.restart-contanter {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translateY(-50%);
+}

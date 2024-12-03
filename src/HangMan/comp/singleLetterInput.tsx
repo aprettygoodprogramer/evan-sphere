@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import "./letterInput.css";
 
 interface LetterInputProps {
-  onSubmit: () => void;
+  onSubmit: (letter: string) => void;
 }
 
 const LetterInput: React.FC<LetterInputProps> = ({ onSubmit }) => {
@@ -11,14 +11,14 @@ const LetterInput: React.FC<LetterInputProps> = ({ onSubmit }) => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
     if (input.length <= 1 && /^[a-zA-Z]*$/.test(input)) {
-      setLetter(input);
+      setLetter(input.toLowerCase());
     }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (letter) {
-      onSubmit();
+      onSubmit(letter);
       setLetter("");
     }
   };
