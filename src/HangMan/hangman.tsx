@@ -43,11 +43,7 @@ function HangMan() {
       }
       return newIndex < 6 ? newIndex : prev;
     });
-    //TODO add a resart function and call it in the resart button
-    
-
-
-    }
+    //TODO add a resart button and call it in the resart button
   };
 
   return (
@@ -77,7 +73,7 @@ function HangMan() {
       </div>
 
       <div className="restart-contanter">
-        <button className="github-button" onClick={}>
+        <button className="github-button">
           Restart
           <Outlet />
         </button>
