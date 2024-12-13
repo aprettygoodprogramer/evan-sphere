@@ -6,6 +6,7 @@ import HangMan from './HangMan/hangman.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SpaceshipGamea from './GamePages/spaceshipgameFile.tsx'; // 
 import TowerDefence from './GamePages/towerdefencepage.tsx';
+import TimeManager from './TimeManager/TimeManagerPage.tsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/Towerdefence',
     element: <TowerDefence />,
+  },
+  {
+    path: '/TimeManager',
+    element: <TimeManager/>,
   }
 ]);
 
