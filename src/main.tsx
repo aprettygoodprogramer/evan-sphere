@@ -10,7 +10,7 @@ import TimeManager from './TimeManager/TimeManagerPage.tsx';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App/>,
     errorElement: <div><h1>404 Not Found :(</h1></div>,
   },
   {

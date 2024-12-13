@@ -18,7 +18,6 @@ const GithubButton: React.FC = () => {
         padding: "8px 12px",
         borderRadius: "5px",
         fontSize: "16px",
-        transition: "background-color 0.3s",
       }}
     >
       <FaGithub style={{ marginRight: "8px" }} /> GitHub

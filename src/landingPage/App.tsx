@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "../comp/text";
 import GitHubLink from "./comp/GithubBut";
+import BuyMeACoffeeButton from "./comp/buyMeAcoffeButton.tsx";
 import "../App.css";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -25,6 +26,10 @@ function App() {
       <button className="github-button">
         <Link to="/TowerDefence">Play My TowerDefence Game!</Link>
       </button>
+      <button className="github-button">
+        <Link to="/TimeManager">Use My Task Manager!</Link>
+      </button>
+      <BuyMeACoffeeButton/>
       <Outlet />
     </div>
   );

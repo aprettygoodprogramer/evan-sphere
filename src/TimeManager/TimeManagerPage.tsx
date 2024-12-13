@@ -1,11 +1,11 @@
 import FlexBox from "./flexBox"
-
+import './KanbanBoard.css'
 
 export default function TimeManager() {
 
     return(
-        <div>
-            <FlexBox/>
+        <div className="background">
+            <FlexBox />
         </div>
 
     )

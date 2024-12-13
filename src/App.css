@@ -108,3 +108,23 @@
   top: 70%;
   transform: translateY(-50%);
 }
+.button-container51 {
+color: #121222;
+
+
+}
+
+.sigma {
+  background: linear-gradient(to right, black, #121222);
+  padding: 5px 10px;
+  color: rgba(41, 41, 41, 0.5);
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  transform: scale(0.75);
+}
