@@ -30,13 +30,19 @@ const KanbanBoard: React.FC = () => {
     e.dataTransfer.setData("fromColumn", column);
   };
 
-  const handleDrop = (e: React.DragEvent, setColumn: React.Dispatch<React.SetStateAction<Task[]>>) => {
+  const handleDrop = (
+    e: React.DragEvent,
+    setColumn: React.Dispatch<React.SetStateAction<Task[]>>
+  ) => {
     const task = JSON.parse(e.dataTransfer.getData("task")) as Task;
     const fromColumn = e.dataTransfer.getData("fromColumn");
 
-    if (fromColumn === "todo") setTodo((prev) => prev.filter((t) => t.id !== task.id));
-    if (fromColumn === "inProgress") setInProgress((prev) => prev.filter((t) => t.id !== task.id));
-    if (fromColumn === "finished") setFinished((prev) => prev.filter((t) => t.id !== task.id));
+    if (fromColumn === "todo")
+      setTodo((prev) => prev.filter((t) => t.id !== task.id));
+    if (fromColumn === "inProgress")
+      setInProgress((prev) => prev.filter((t) => t.id !== task.id));
+    if (fromColumn === "finished")
+      setFinished((prev) => prev.filter((t) => t.id !== task.id));
 
     setColumn((prev) => [...prev, task]);
   };
