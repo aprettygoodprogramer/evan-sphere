@@ -113,7 +113,14 @@ color: #121222;
 
 
 }
+.h1-no-animation {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  font-family: 'Font2', serif;
+  text-align: center;
 
+}
 .sigma {
   background: linear-gradient(to right, black, #121222);
   padding: 5px 10px;
