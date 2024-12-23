@@ -13,7 +13,7 @@ const KanbanBoard: React.FC = () => {
   const [finished, setFinished] = useState<Task[]>([]);
   const [taskContent, setTaskContent] = useState<string>("");
   const [taskTime, setTaskTime] = useState<string>("");
-
+  const [currTab, setCurrTab] = useState<number>(0);
   const addTask = () => {
     if (taskContent.trim() && taskTime.trim()) {
       setTodo((prev) => [
