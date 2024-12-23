@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SpaceshipGamea from './GamePages/spaceshipgameFile.tsx'; // 
 import TowerDefence from './GamePages/towerdefencepage.tsx';
 import TimeManager from './TimeManager/TimeManagerPage.tsx';
+import Blogy from './blog/blogy.tsx';
+import PhisicsEngineBlog from './blog/physicsEngineBlog.tsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,8 +30,18 @@ const router = createBrowserRouter([
   {
     path: '/TimeManager',
     element: <TimeManager/>,
-  }
-]);
+  },
+  {
+    path: "/blog",
+    element: <Blogy />,
+  },
+  {
+    path: "blog/physicsEngine",
+    element: <PhisicsEngineBlog />,
+  },
+
+])
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
