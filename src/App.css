@@ -32,29 +32,32 @@
   margin: auto;
   font-family: 'Font2', serif;
   text-align: center;
-  
   animation: tracking-in-contract-bck 4s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-  
 }
 
 .p1 {
   font-family: 'Font1', sans-serif;
   text-align: center;
-  margin-top: 450px; 
+  margin-top: 450px;
   animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 .page-background {
   background: linear-gradient(to right, #121222, black);
-  width: 100%;
-  height: 100vh;
-  display: flex;
+  min-width: 900px;
+  min-height: 900px;
+  display: flexbox;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  overflow-x: scroll;
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: cover;
+  animation: scroll-background 30s linear infinite;
 }
-
 .github-button {
   background: linear-gradient(to right, black, #121222);
   padding: 10px 20px;
@@ -67,12 +70,11 @@
 }
 
 .github-button a {
-  color: inherit; 
-  text-decoration: none; 
-  display: block; 
-  width: 100%; 
-  height: 100%; 
-  
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .game-container {
@@ -84,17 +86,18 @@
 }
 
 .game-frame {
-  width: 80%; 
-  height: 100%; 
+  width: 80%;
+  height: 100%;
   border: none;
 }
 
 .game-text {
-  margin-top: 20px; 
+  margin-top: 20px;
   text-align: center;
   font-family: 'Font1', sans-serif;
   color: white;
 }
+
 .button-container {
   position: fixed;
   left: 20px;
@@ -108,19 +111,25 @@
   top: 70%;
   transform: translateY(-50%);
 }
+
 .button-container51 {
-color: #121222;
-
-
+  color: #121222;
 }
+
 .h1-no-animation {
   position: absolute;
   inset: 0;
   margin: auto;
   font-family: 'Font2', serif;
   text-align: center;
-
 }
+
+.p1-no-animation {
+  font-family: 'Font1', sans-serif;
+  text-align: center;
+  margin-top: 450px;
+}
+
 .sigma {
   background: linear-gradient(to right, black, #121222);
   padding: 5px 10px;
@@ -136,9 +145,7 @@ color: #121222;
   transform: scale(0.75);
 }
 
-
 .task-manager-task {
-
   background: linear-gradient(to right, rgb(62, 62, 62), #28284b);
   padding: 10px 20px;
   color: rgb(255, 255, 255);
@@ -146,6 +153,14 @@ color: #121222;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
-
 }
+
+.blog-image {
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  object-fit: contain; /* Ensures the image fits within its container without distortion */
+  max-height: 70vh; /* Limits the vertical height to avoid overflowing the viewport */
+}
+
