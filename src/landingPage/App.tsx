@@ -32,6 +32,9 @@ function App() {
       <button className="github-button">
         <Link to="/blog">Look At My Blog!!</Link>
       </button>
+      <button className="github-button">
+        <Link to="/sortingAlg">Sorting Alg Visulization</Link>
+      </button>
       <Outlet />
     </div>
   );
