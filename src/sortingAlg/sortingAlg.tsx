@@ -25,7 +25,7 @@ const SortingVisualizer: React.FC = () => {
     setArray(newArray);
   };
 
-
+  // Custom delay function that either waits for a setTimeout or a manual step.
   const delay = () => {
     if (stepMode) {
       return new Promise<void>((resolve) => {
@@ -65,7 +65,36 @@ const SortingVisualizer: React.FC = () => {
     setIsSorting(false);
   };
 
-  // -------------------- Quick Sort -------------------- (AI used to get the algorithm)
+  // -------------------- Insertion Sort --------------------
+  const insertionSort = async () => {
+    setIsSorting(true);
+    const arr = [...array];
+    // Start from the second element (first element is trivially sorted)
+    for (let i = 1; i < arr.length; i++) {
+      const key = arr[i];
+      let j = i - 1;
+      // Highlight the current key element.
+      setActiveIndices([i]);
+      await delay();
+
+      // Shift elements of the sorted segment that are greater than the key.
+      while (j >= 0 && arr[j] > key) {
+        setActiveIndices([j, j + 1]);
+        await delay();
+        arr[j + 1] = arr[j];
+        setArray([...arr]);
+        await delay();
+        j = j - 1;
+      }
+      arr[j + 1] = key;
+      setArray([...arr]);
+      await delay();
+      setActiveIndices([]);
+    }
+    setIsSorting(false);
+  };
+
+  // -------------------- Quick Sort --------------------
   const quickSort = async () => {
     setIsSorting(true);
     const arr = [...array];
@@ -112,11 +141,9 @@ const SortingVisualizer: React.FC = () => {
     return i + 1;
   };
 
-  
-
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h1>Sorting Visualizer )</h1>
+      <h1>Sorting Visualizer</h1>
 
       <div
         style={{
@@ -163,6 +190,22 @@ const SortingVisualizer: React.FC = () => {
           Bubble Sort
         </button>
         <button
+          onClick={insertionSort}
+          disabled={isSorting}
+          style={{
+            padding: '10px 20px',
+            marginRight: '10px',
+            fontSize: '16px',
+            cursor: 'pointer',
+            border: 'none',
+            backgroundColor: '#333',
+            color: '#fff',
+            borderRadius: '4px',
+          }}
+        >
+          Insertion Sort
+        </button>
+        <button
           onClick={quickSort}
           disabled={isSorting}
           style={{
@@ -178,7 +221,6 @@ const SortingVisualizer: React.FC = () => {
         >
           Quick Sort
         </button>
-
         <button
           onClick={generateArray}
           disabled={isSorting}
