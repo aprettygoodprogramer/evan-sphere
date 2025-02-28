@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-  }
+  },
+  preview: {
+    allowedHosts: ["www.evan-sphere.com"], 
+  },
 });
