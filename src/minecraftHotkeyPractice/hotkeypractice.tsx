@@ -1,11 +1,12 @@
 import "./hotkey.css";
-
-import hotbar from "./images/hotbar.png";
+import pic from "./images/hotbar.png";
+import Slot from "./slot.tsx";
+import Hotbar from "./hotbar.tsx";
 const hotkeyPractice = () => {
   return (
     <div className="App">
       <div className="CenterContainer">
-        <img src={hotbar} alt="Hot Bar" className="image" />
+        <Hotbar />
       </div>
     </div>
   );
