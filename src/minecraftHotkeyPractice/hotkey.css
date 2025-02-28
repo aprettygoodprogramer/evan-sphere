@@ -10,6 +10,14 @@
 .image {
 
 
-    width: 800px;
+    width: 50px;
 
+}
+
+
+.HotbarContainer {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+                  
 }
