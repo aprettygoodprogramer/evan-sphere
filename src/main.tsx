@@ -11,6 +11,9 @@ import Blogy from "./blog/blogy.tsx";
 import PhisicsEngineBlog from "./blog/physicsEngineBlog.tsx";
 import Hoykeypractice from "./minecraftHotkeyPractice/hotkeypractice.tsx";
 import SortingVisualizer from "./sortingAlg/sortingAlg.tsx";
+import Home from "./JournalingApp/home.tsx";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +55,11 @@ const router = createBrowserRouter([
   {
     path: "/sortingAlg",
     element: <SortingVisualizer />,
+
+  },
+  {
+    path: "/Journoling",
+    element: <Home />,
 
   },
 ]);
