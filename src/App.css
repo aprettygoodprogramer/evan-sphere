@@ -160,7 +160,14 @@
   height: auto;
   display: block;
   margin: 20px auto;
-  object-fit: contain; /* Ensures the image fits within its container without distortion */
-  max-height: 70vh; /* Limits the vertical height to avoid overflowing the viewport */
+  object-fit: contain; 
+  max-height: 70vh; 
 }
 
+.centerAligned {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 16px; 
+  
+}

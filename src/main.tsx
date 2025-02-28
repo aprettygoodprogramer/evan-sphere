@@ -10,6 +10,7 @@ import TimeManager from "./TimeManager/TimeManagerPage.tsx";
 import Blogy from "./blog/blogy.tsx";
 import PhisicsEngineBlog from "./blog/physicsEngineBlog.tsx";
 import Hoykeypractice from "./minecraftHotkeyPractice/hotkeypractice.tsx";
+import SortingVisualizer from "./sortingAlg/sortingAlg.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
   {
     path: "/hotkeypractice",
     element: <Hoykeypractice />,
+  },
+  {
+    path: "/sortingAlg",
+    element: <SortingVisualizer />,
+
   },
 ]);
 
