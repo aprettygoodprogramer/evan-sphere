@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <GoogleOAuthProvider clientId="169031639605-7nkqs7vod1cpfqs1i57k6v0h8thj058i.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
       <div>
         <h1>Hello World</h1>
         <GoogleLogin
