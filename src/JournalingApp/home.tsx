@@ -7,7 +7,7 @@ const Home: React.FC = () => {
 
     const idToken = credentialResponse.credential;
 
-    fetch("http://evan-spherejournalbackend.railway.internal/auth/google", {
+    fetch("https://evan-spherejournalbackend.railway.internal/auth/google", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
