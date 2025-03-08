@@ -10,4 +10,7 @@ export default defineConfig({
   preview: {
     allowedHosts: ["www.evan-sphere.com"], 
   },
+  server: {
+    port: 5173, 
+  },
 });
