@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import Split from "react-split";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:12345";
 
 const Home: React.FC = () => {
+  const [serverMessage, setServerMessage] = useState("");
+
+  useEffect(() => {
+    // Fetch Hello World message immediately on page load
+    fetch(`${API_BASE_URL}/hello`)
+      .then((res) => res.text())
+      .then((data) => {
+        console.log("Backend response:", data);
+        setServerMessage(data);
+      })
+      .catch((err) => console.error("Error fetching /hello:", err));
+  }, []);
+
   const handleLoginSuccess = (credentialResponse: any) => {
     console.log("Login Success:", credentialResponse);
 
@@ -16,7 +30,10 @@ const Home: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id_token: idToken }),
-    }).catch((error) => console.error("Request failed:", error));
+    })
+      .then((res) => res.text())
+      .then((data) => console.log("Auth response:", data))
+      .catch((error) => console.error("Request failed:", error));
   };
 
   const handleLoginFailure = () => {
@@ -25,13 +42,19 @@ const Home: React.FC = () => {
 
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-      <div>
-        <h1>Hello World</h1>
-        <GoogleLogin
-          onSuccess={handleLoginSuccess}
-          onError={handleLoginFailure}
-        />
-      </div>
+      <Split className="split-container" sizes={[40, 60]}>
+        <div className="left-panel">
+          <h1>Your Journey Starts Here</h1>
+          <GoogleLogin
+            onSuccess={handleLoginSuccess}
+            onError={handleLoginFailure}
+          />
+        </div>
+        <div className="right-panel">
+          <p>Welcome to your journey with this journaling program!</p>
+          <p>Server says: {serverMessage}</p>
+        </div>
+      </Split>
     </GoogleOAuthProvider>
   );
 };
