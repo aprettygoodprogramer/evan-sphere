@@ -4,31 +4,22 @@ import Split from "react-split";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:12345";
-
 const Home: React.FC = () => {
   const handleLoginSuccess = (credentialResponse: any) => {
-    console.log("Login Success:", credentialResponse);
-
     const idToken = credentialResponse.credential;
 
     fetch(`${API_BASE_URL}/auth/google`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id_token: idToken }),
-    }).catch((error) => console.error("Request failed:", error));
-  };
-
-  const handleLoginFailure = () => {
-    console.log("Login Failed");
+    }).catch((error) => console.error("Login request failed:", error));
   };
 
   const fetchHello = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/hello`);
       const data = await response.text();
-      console.log(data);
+      console.log("/hello response:", data);
     } catch (error) {
       console.error("Error fetching /hello:", error);
     }
@@ -41,19 +32,22 @@ const Home: React.FC = () => {
           <h1>Your Journey Starts Here</h1>
           <GoogleLogin
             onSuccess={handleLoginSuccess}
-            onError={handleLoginFailure}
+            onError={() => console.log("Login Failed")}
           />
-          <button onClick={fetchHello}>Call /hello</button>
+          <button onClick={fetchHello}>Test /hello Endpoint</button>
         </div>
         <div className="right-panel">
-          <p>Welcome to your journey with this journaling program!</p>
+          <p>Welcome to your journaling program!</p>
         </div>
       </Split>
     </GoogleOAuthProvider>
   );
 };
 
-console.log("Google Client ID:", import.meta.env.VITE_GOOGLE_CLIENT_ID);
-console.log("API Base URL:", API_BASE_URL);
+// Debug logs
+console.log("Environment Variables:", {
+  VITE_GOOGLE_CLIENT_ID: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+  VITE_API_BASE_URL: API_BASE_URL,
+});
 
 export default Home;
