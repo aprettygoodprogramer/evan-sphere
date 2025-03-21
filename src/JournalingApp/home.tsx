@@ -6,19 +6,6 @@ const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:12345";
 
 const Home: React.FC = () => {
-  const [serverMessage, setServerMessage] = useState("");
-
-  useEffect(() => {
-    // Fetch Hello World message immediately on page load
-    fetch(`${API_BASE_URL}/hello`)
-      .then((res) => res.text())
-      .then((data) => {
-        console.log("Backend response:", data);
-        setServerMessage(data);
-      })
-      .catch((err) => console.error("Error fetching /hello:", err));
-  }, []);
-
   const handleLoginSuccess = (credentialResponse: any) => {
     console.log("Login Success:", credentialResponse);
 
@@ -30,10 +17,7 @@ const Home: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id_token: idToken }),
-    })
-      .then((res) => res.text())
-      .then((data) => console.log("Auth response:", data))
-      .catch((error) => console.error("Request failed:", error));
+    }).catch((error) => console.error("Request failed:", error));
   };
 
   const handleLoginFailure = () => {
@@ -52,7 +36,6 @@ const Home: React.FC = () => {
         </div>
         <div className="right-panel">
           <p>Welcome to your journey with this journaling program!</p>
-          <p>Server says: {serverMessage}</p>
         </div>
       </Split>
     </GoogleOAuthProvider>
