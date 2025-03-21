@@ -24,6 +24,16 @@ const Home: React.FC = () => {
     console.log("Login Failed");
   };
 
+  const fetchHello = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/hello`);
+      const data = await response.text();
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching /hello:", error);
+    }
+  };
+
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
       <Split className="split-container" sizes={[40, 60]}>
@@ -33,6 +43,7 @@ const Home: React.FC = () => {
             onSuccess={handleLoginSuccess}
             onError={handleLoginFailure}
           />
+          <button onClick={fetchHello}>Call /hello</button>
         </div>
         <div className="right-panel">
           <p>Welcome to your journey with this journaling program!</p>
