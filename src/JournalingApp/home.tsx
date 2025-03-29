@@ -1,53 +1,88 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import Split from "react-split";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:12345";
 
+interface AuthResponse {
+  success: boolean;
+  message: string;
+  session_id: string;
+  sub: string;
+}
+
+interface VerifyRequest {
+  session_id: string;
+  sub: string;
+}
+
 const Home: React.FC = () => {
   const [authMessage, setAuthMessage] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(
-    localStorage.getItem("session_id") || null
+    localStorage.getItem("session_id")
+  );
+  const [userSub, setUserSub] = useState<string | null>(
+    localStorage.getItem("user_sub")
   );
 
-  const handleLoginSuccess = (credentialResponse: any) => {
-    const idToken = credentialResponse.credential;
+  useEffect(() => {
+    const verifySession = async () => {
+      console.log("Verifying session...");
+      console.log(sessionId, userSub);
+      if (!sessionId || !userSub) return;
 
-    fetch(`${API_BASE_URL}/auth/google`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_token: idToken }),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
-      })
-      .then(
-        (data: { success: boolean; message: string; session_id?: string }) => {
-          setAuthMessage(data.message);
-          if (data.success && data.session_id) {
-            setSessionId(data.session_id);
-            localStorage.setItem("session_id", data.session_id);
-            console.log("Session ID stored:", data.session_id);
-          } else {
-            console.log("Authentication failed:", data.message);
-          }
+      try {
+        const verifyBody: VerifyRequest = {
+          session_id: sessionId,
+          sub: userSub,
+        };
+
+        const response = await fetch(`${API_BASE_URL}/auth/verify`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(verifyBody),
+        });
+
+        const data = await response.json();
+        console.log("Verification response:", data);
+        if (!data.success) {
+          localStorage.clear();
+          setSessionId(null);
+          setUserSub(null);
         }
-      )
-      .catch((error) => {
-        setAuthMessage("Login failed - please try again");
-        console.error("Login request failed:", error);
-      });
-  };
+      } catch (error) {
+        console.error("Verification failed:", error);
+      }
+    };
 
-  const fetchHello = async () => {
+    verifySession();
+  }, []);
+
+  const handleLoginSuccess = async (credentialResponse: any) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/hello`);
-      const data = await response.text();
-      console.log("/hello response:", data);
+      const response = await fetch(`${API_BASE_URL}/auth/google`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id_token: credentialResponse.credential }),
+      });
+
+      const data: AuthResponse = await response.json();
+
+      if (data.success) {
+        const sessionId = data.session_id.toString();
+
+        const sub = data.sub.toString();
+
+        localStorage.setItem("session_id", sessionId);
+        localStorage.setItem("user_sub", sub);
+        setSessionId(sessionId);
+        setUserSub(sub);
+        setAuthMessage(data.message);
+      }
     } catch (error) {
-      console.error("Error fetching /hello:", error);
+      console.error("Login failed:", error);
+      setAuthMessage("Login failed - please try again");
     }
   };
 
@@ -58,13 +93,18 @@ const Home: React.FC = () => {
           <h1>Your Journey Starts Here</h1>
           <GoogleLogin
             onSuccess={handleLoginSuccess}
-            onError={() => console.log("Login Failed")}
+            onError={() => setAuthMessage("Login Failed")}
           />
-          <button onClick={fetchHello}>Test /hello Endpoint</button>
+          {authMessage && <p>{authMessage}</p>}
         </div>
         <div className="right-panel">
           <p>Welcome to your journaling program!</p>
-          {sessionId && <p>Session Active: {sessionId}</p>}
+          {sessionId && (
+            <>
+              <p>Session: {sessionId}</p>
+              {userSub && <p>User ID: {userSub}</p>}
+            </>
+          )}
         </div>
       </Split>
     </GoogleOAuthProvider>
