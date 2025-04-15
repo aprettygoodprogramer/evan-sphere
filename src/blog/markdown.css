@@ -1,0 +1,31 @@
+.markdown-body {
+    line-height: 1.6;
+  }
+  
+  .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    margin: 1.5em 0 1em;
+  }
+  
+  .markdown-body p {
+    margin: 1em 0;
+  }
+  
+  .markdown-body pre {
+    background: #f6f8fa;
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  
+  .markdown-body code {
+    font-family: Monaco, monospace;
+  }
+  
+  .markdown-body a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+  
+  .markdown-body a:hover {
+    text-decoration: underline;
+  }
