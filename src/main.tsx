@@ -9,10 +9,11 @@ import TowerDefence from "./GamePages/towerdefencepage.tsx";
 import TimeManager from "./TimeManager/TimeManagerPage.tsx";
 import Blogy from "./blog/blogy.tsx";
 import PhisicsEngineBlog from "./blog/physicsEngineBlog.tsx";
+import Posts from "./blog/Posts.tsx";
+import PostPage from "./blog/PostPage.tsx";
 import Hoykeypractice from "./minecraftHotkeyPractice/hotkeypractice.tsx";
 import SortingVisualizer from "./sortingAlg/sortingAlg.tsx";
 import Home from "./JournalingApp/home.tsx";
-
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/blog",
     element: <Blogy />,
+    children: [
+      { index: true, element: <Posts /> },
+      { path: ":slug", element: <PostPage /> },
+    ],
   },
   {
     path: "blog/physicsEngine",
@@ -55,12 +60,10 @@ const router = createBrowserRouter([
   {
     path: "/sortingAlg",
     element: <SortingVisualizer />,
-
   },
   {
     path: "/Journoling",
     element: <Home />,
-
   },
 ]);
 
