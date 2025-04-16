@@ -4,8 +4,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
+import "./markdown.css";
 
-const API_BASE_URL = import.meta.env.VITE_BLOG_URL || "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_BLOG_URL || "https://localhost:3000";
 
 declare module "react-markdown" {
   interface ReactMarkdownProps {
@@ -45,14 +46,31 @@ const PostPage = () => {
     fetchPost();
   }, [slug]);
 
-  if (loading) return <div className="loading">Loading post...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
-  if (!post) return <div className="error">Post not found</div>;
+  if (loading)
+    return (
+      <div className="loading" style={{ color: "white" }}>
+        Loading post...
+      </div>
+    );
+  if (error)
+    return (
+      <div className="error" style={{ color: "white" }}>
+        Error: {error}
+      </div>
+    );
+  if (!post)
+    return (
+      <div className="error" style={{ color: "white" }}>
+        Post not found
+      </div>
+    );
 
   return (
-    <article className="post-content">
-      <h1 className="post-title">{post.title}</h1>
-      <div className="post-meta">
+    <article className="post-content" style={{ color: "white" }}>
+      <h1 className="post-title" style={{ color: "white" }}>
+        {post.title}
+      </h1>
+      <div className="post-meta" style={{ color: "#cccccc" }}>
         {post.created_at && (
           <time className="post-date" dateTime={post.created_at}>
             {new Date(post.created_at).toLocaleDateString("en-US", {
