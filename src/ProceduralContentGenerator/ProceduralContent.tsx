@@ -3,7 +3,6 @@ import "./ProceduralContentGenerator.css";
 
 const ProceduralContent: React.FC = () => {
   const [value1, setValue1] = useState(50);
-  const [value2, setValue2] = useState(75);
 
   return (
     <div className="page-container">
