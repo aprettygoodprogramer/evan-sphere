@@ -4,12 +4,15 @@ import { Outlet, Link } from "react-router-dom";
 import LetterInput from "./comp/singleLetterInput";
 import words from "./wordlist.json";
 import "../App.css";
-import hang1 from "./HangManPic/Hang1.png";
-import hang2 from "./HangManPic/Hang2.png";
-import hang3 from "./HangManPic/Hang3.png";
-import hang4 from "./HangManPic/Hang4.png";
-import hang5 from "./HangManPic/Hang5.png";
-import hang6 from "./HangManPic/Hang6.png";
+
+const hangImages = [
+  "https://i.imgur.com/pm1lAxA.png", // Hang 1
+  "https://i.imgur.com/Sa9eHw4.png", // Hang 2
+  "https://i.imgur.com/zyPruez.png", // Hang 3
+  "https://i.imgur.com/NBqB0YF.png", // Hang 4
+  "https://i.imgur.com/Z8pqLp9.png", // Hang 5
+  "https://i.imgur.com/XslnI6Q.png", // Hang 6
+];
 
 function GetRandomWord() {
   const randomIndex = Math.floor(Math.random() * words.length);
@@ -19,13 +22,12 @@ function GetRandomWord() {
 function HangMan() {
   const [word, setWord] = useState<string>(GetRandomWord());
   const [Hangindex, setHangindex] = useState<number>(1);
-  const [currHang, setCurrHang] = useState<string>(hang1);
+  const [currHang, setCurrHang] = useState<string>(hangImages[0]);
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
   useEffect(() => {
-    const hangImages = [hang1, hang2, hang3, hang4, hang5, hang6];
-    setCurrHang(hangImages[Hangindex - 1] || hang1);
+    setCurrHang(hangImages[Hangindex - 1] || hangImages[0]);
     if (Hangindex >= 6) {
       setIsGameOver(true);
     }
@@ -43,7 +45,7 @@ function HangMan() {
   function restart() {
     setWord(GetRandomWord());
     setHangindex(1);
-    setCurrHang(hang1);
+    setCurrHang(hangImages[0]);
     setGuessedLetters(new Set());
     setIsGameOver(false);
   }

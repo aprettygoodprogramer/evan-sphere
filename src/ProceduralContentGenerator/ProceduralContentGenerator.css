@@ -1,0 +1,32 @@
+.page-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #232323;
+    color: #EFECD7;
+    font-family: sans-serif;
+  }
+  
+  .left-half {
+    flex: 1;
+    padding: 2rem;
+    border-right: 1px solid #444;
+  }
+  
+  .right-half {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  input[type="range"] {
+    width: 100%;
+  }
+  
