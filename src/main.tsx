@@ -1,21 +1,21 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import App from "./landingPage/App.tsx";
 import HangMan from "./HangMan/hangman.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import SpaceshipGamea from "./GamePages/spaceshipgameFile.tsx"; //
+import SpaceshipGamea from "./GamePages/spaceshipgameFile.tsx";
 import TowerDefence from "./GamePages/towerdefencepage.tsx";
-import TimeManager from "./TimeManager/TimeManagerPage.tsx";
 import Blogy from "./blog/blogy.tsx";
-import PhisicsEngineBlog from "./blog/physicsEngineBlog.tsx";
 import Posts from "./blog/Posts.tsx";
 import PostPage from "./blog/PostPage.tsx";
-import Hoykeypractice from "./minecraftHotkeyPractice/hotkeypractice.tsx";
 import SortingVisualizer from "./sortingAlg/sortingAlg.tsx";
 import Home from "./JournalingApp/home.tsx";
 import Portfoli from "./portfolio/app.tsx";
 import ProceduralContent from "./ProceduralContentGenerator/ProceduralContent.tsx";
+
+const TimeManager = lazy(() => import("./TimeManager/TimeManagerPage.tsx"));
 
 const router = createBrowserRouter([
   {
@@ -41,7 +41,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/TimeManager",
-    element: <TimeManager />,
+    element: (
+      <Suspense fallback={<div>Loading Time Manager...</div>}>
+        <TimeManager />
+      </Suspense>
+    ),
   },
   {
     path: "/blog",
@@ -51,14 +55,7 @@ const router = createBrowserRouter([
       { path: ":slug", element: <PostPage /> },
     ],
   },
-  {
-    path: "blog/physicsEngine",
-    element: <PhisicsEngineBlog />,
-  },
-  {
-    path: "/hotkeypractice",
-    element: <Hoykeypractice />,
-  },
+
   {
     path: "/sortingAlg",
     element: <SortingVisualizer />,
