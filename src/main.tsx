@@ -16,6 +16,7 @@ import SortingVisualizer from "./sortingAlg/sortingAlg.tsx";
 import Home from "./JournalingApp/home.tsx";
 import Portfoli from "./portfolio/app.tsx";
 import ProceduralContent from "./ProceduralContentGenerator/ProceduralContent.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",

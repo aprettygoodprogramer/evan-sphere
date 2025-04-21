@@ -53,12 +53,10 @@ const KanbanBoard: React.FC = () => {
 
   const renderTasks = (tasks: Task[], column: string) =>
     tasks.map((task) => (
-      <div 
+      <div
         key={task.id}
         className="task-manager-task"
-
         draggable
-        
         onDragStart={(e) => handleDragStart(e, task, column)}
       >
         <span>{task.content}</span>
@@ -68,7 +66,7 @@ const KanbanBoard: React.FC = () => {
 
   return (
     <div>
-      <div className="input-container" >
+      <div className="input-container">
         <input
           type="text"
           placeholder="Task name"
@@ -82,7 +80,9 @@ const KanbanBoard: React.FC = () => {
           onChange={(e) => setTaskTime(e.target.value)}
           className="github-button"
         />
-        <button onClick={addTask} className="github-button">Add Task</button>
+        <button onClick={addTask} className="github-button">
+          Add Task
+        </button>
       </div>
       <div className="kanban-board">
         <div
