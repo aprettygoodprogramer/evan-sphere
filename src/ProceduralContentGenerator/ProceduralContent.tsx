@@ -16,7 +16,7 @@ const ProceduralContent: React.FC = () => {
         <h1>Procedural Content</h1>
 
         <div className="slider-group">
-          <label htmlFor="slider-rooms">Amt Rooms</label>
+          <label htmlFor="slider-rooms">Detail</label>
           <input
             id="slider-rooms"
             type="range"
