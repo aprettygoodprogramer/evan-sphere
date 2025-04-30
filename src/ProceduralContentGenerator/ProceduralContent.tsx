@@ -2,27 +2,53 @@ import React, { useState } from "react";
 import "./ProceduralContentGenerator.css";
 
 const ProceduralContent: React.FC = () => {
-  const [value1, setValue1] = useState(50);
+  const [rooms, setRooms] = useState(50);
+  const [seed, setSeed] = useState(0);
+
+  const backend =
+    import.meta.env.VITE_BACKEND_CONTENT_URL ?? "http://localhost:3000";
+
+  const imageUrl = `${backend}/generateterrain?rooms=${rooms}&seed=${seed}`;
 
   return (
     <div className="page-container">
       <div className="left-half">
         <h1>Procedural Content</h1>
-        <p>This is a basic React component.</p>
+
         <div className="slider-group">
-          <label htmlFor="Amt Rooms">Amt Rooms</label>
+          <label htmlFor="slider-rooms">Amt Rooms</label>
           <input
-            id="slider1"
+            id="slider-rooms"
             type="range"
             min="0"
             max="100"
-            value={value1}
-            onChange={(e) => setValue1(parseInt(e.target.value))}
+            value={rooms}
+            onChange={(e) => setRooms(+e.target.value)}
           />
-          <span>{value1}</span>
+          <span>{rooms}</span>
+        </div>
+
+        <div className="slider-group">
+          <label htmlFor="slider-seed">Seed</label>
+          <input
+            id="slider-seed"
+            type="range"
+            min="0"
+            max="10000"
+            value={seed}
+            onChange={(e) => setSeed(+e.target.value)}
+          />
+          <span>{seed}</span>
         </div>
       </div>
-      <div className="right-half"></div>
+
+      <div className="right-half">
+        <img
+          src={imageUrl}
+          alt="Procedural terrain"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
     </div>
   );
 };
