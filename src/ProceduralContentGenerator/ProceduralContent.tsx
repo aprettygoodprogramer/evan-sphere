@@ -11,7 +11,6 @@ interface FormParams {
 }
 
 const ProceduralContent: React.FC = () => {
-  // form state (live)
   const [form, setForm] = useState<FormParams>({
     rooms: 50,
     seed: 0,
@@ -21,7 +20,6 @@ const ProceduralContent: React.FC = () => {
     seaLevel: 0.0,
   });
 
-  // submitted state (controls image refresh)
   const [submitted, setSubmitted] = useState<FormParams>(form);
 
   const backend =
@@ -50,7 +48,6 @@ const ProceduralContent: React.FC = () => {
       <div className="left-half">
         <h1>Procedural Content</h1>
         <form onSubmit={handleSubmit}>
-          {/** zoom / detail */}
           <div className="slider-group">
             <label htmlFor="rooms">Zoom</label>
             <input
@@ -63,7 +60,6 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.rooms}</span>
           </div>
-          {/** seed */}
           <div className="slider-group">
             <label htmlFor="seed">Seed</label>
             <input
@@ -76,7 +72,6 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.seed}</span>
           </div>
-          {/** octaves */}
           <div className="slider-group">
             <label htmlFor="octaves">Octaves</label>
             <input
@@ -90,7 +85,6 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.octaves}</span>
           </div>
-          {/** persistence */}
           <div className="slider-group">
             <label htmlFor="persistence">Persistence</label>
             <input
@@ -104,7 +98,6 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.persistence.toFixed(2)}</span>
           </div>
-          {/** lacunarity */}
           <div className="slider-group">
             <label htmlFor="lacunarity">Lacunarity</label>
             <input
@@ -118,7 +111,6 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.lacunarity.toFixed(1)}</span>
           </div>
-          {/** sea level */}
           <div className="slider-group">
             <label htmlFor="seaLevel">Sea Level</label>
             <input
@@ -135,7 +127,6 @@ const ProceduralContent: React.FC = () => {
           <button type="submit">Generate</button>
         </form>
       </div>
-
       <div className="right-half">
         <img
           src={imageUrl}
