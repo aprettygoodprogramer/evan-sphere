@@ -15,26 +15,29 @@ function App() {
       </Text>
       <GitHubLink />
       <div>
-      <button className="github-button">
-        <Link to="/hangman">Play Hangman</Link>
-      </button>
-      <button className="github-button">
-        <Link to="/SpaceShipGame">Play My Spaceship Game!</Link>
-      </button>
-      <button className="github-button">
-        <Link to="/TowerDefence">Play My TowerDefence Game!</Link>
-      </button>
-      <button className="github-button">
-        <Link to="/TimeManager">Use My Task Manager!</Link>
-      </button>
-      <button className="github-button">
-        <Link to="/blog">Look At My Blog!!</Link>
-      </button>
-      <button className="github-button">
-        <Link to="/sortingAlg">Sorting Alg Visulization</Link>
-      </button>
-      <Outlet />
+        <button className="github-button">
+          <Link to="/hangman">Play Hangman</Link>
+        </button>
+        <button className="github-button">
+          <Link to="/SpaceShipGame">Play My Spaceship Game!</Link>
+        </button>
+        <button className="github-button">
+          <Link to="/TowerDefence">Play My TowerDefence Game!</Link>
+        </button>
+        <button className="github-button">
+          <Link to="/TimeManager">Use My Task Manager!</Link>
+        </button>
+        <button className="github-button">
+          <Link to="/blog">Look At My Blog!!</Link>
+        </button>
+        <button className="github-button">
+          <Link to="/sortingAlg">Sorting Alg Visulization</Link>
+        </button>
+        <button className="github-button">
+          <Link to="/ProceduralContentGenerator">Perlin Noise Generator</Link>
+        </button>
 
+        <Outlet />
       </div>
     </div>
   );
