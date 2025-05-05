@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import Grid from "./grid";
+import Grid from "./Grid";
 
 const ROWS = 30;
 const COLS = 30;
@@ -44,7 +44,6 @@ const DrawingGrid: React.FC = () => {
       rows={ROWS}
       cols={COLS}
       cellSize={CELL_SIZE}
-      dotSize={DOT_SIZE}
       activeCells={activeCells}
       onCellMouseDown={handleCellMouseDown}
       onCellMouseEnter={handleCellMouseEnter}
