@@ -14,8 +14,9 @@ import SortingVisualizer from "./sortingAlg/sortingAlg.tsx";
 import Home from "./JournalingApp/home.tsx";
 import Portfoli from "./portfolio/app.tsx";
 import ProceduralContent from "./ProceduralContentGenerator/ProceduralContent.tsx";
-import DrawingGrid from "./pathfinding/DrawingGrid.tsx";
+
 const TimeManager = lazy(() => import("./TimeManager/TimeManagerPage.tsx"));
+const DrawingGrid = lazy(() => import("./pathfinding/DrawingGrid.tsx"));
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,6 @@ const router = createBrowserRouter([
       { path: ":slug", element: <PostPage /> },
     ],
   },
-
   {
     path: "/sortingAlg",
     element: <SortingVisualizer />,
@@ -74,7 +74,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/pathfinding",
-    element: <DrawingGrid />,
+    element: (
+      <Suspense fallback={<div>Loading Drawing Grid...</div>}>
+        <DrawingGrid />
+      </Suspense>
+    ),
   },
 ]);
 
