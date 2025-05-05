@@ -42,22 +42,7 @@
   animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-.page-background {
-  background: linear-gradient(to right, #121222, black);
-  min-width: 900px;
-  min-height: 900px;
-  display: flexbox;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-  overflow-x: scroll;
-  background-repeat: repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-size: cover;
-  animation: scroll-background 30s linear infinite;
-}
+
 .github-button {
   background: linear-gradient(to right, black, #121222);
   padding: 10px 20px;
