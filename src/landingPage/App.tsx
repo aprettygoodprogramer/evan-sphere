@@ -37,6 +37,9 @@ function App() {
           <Link to="/ProceduralContentGenerator">Perlin Noise Generator</Link>
         </button>
         <button className="github-button">
+          <Link to="/portfolio">My Portfolio</Link>
+        </button>
+        <button className="github-button">
           <Link to="/pathfinding">Path Finder</Link>
         </button>
 
