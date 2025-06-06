@@ -1,0 +1,159 @@
+:root {
+    --dark-blue: #0b2545;
+    --mid-blue: #13315c;
+    --light-blue: #134074;
+    --accent-gold: #fdc500;
+    --text-light: #e2e8f0;
+    --text-muted: #94a3b8;
+    --bg-glass: rgba(19, 49, 92, 0.5);
+    --border-color: rgba(253, 197, 0, 0.15);
+    --win-green: #4ade80;
+    --loss-red: #ff7b72;
+}
+
+.hangman-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+}
+
+.game-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.hangman-image {
+    width: 284px;
+    height: 392px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 400px;
+    text-align: center;
+}
+
+.game-status {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.word-display {
+    font-family: "Fira Code", monospace;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 0.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(11, 37, 69, 0.7);
+}
+
+.word-display.win {
+    color: var(--win-green);
+}
+
+.word-display.loss {
+    color: var(--loss-red);
+    letter-spacing: 0.2rem;
+}
+
+.guess-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.letter-input {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--text-light);
+    background-color: var(--dark-blue);
+    border: 2px solid var(--light-blue);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.letter-input:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 20px rgba(253, 197, 0, 0.3);
+}
+
+.guessed-letters {
+    color: var(--text-muted);
+}
+
+.letter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    min-height: 30px;
+}
+
+.letter-chip {
+    background: var(--light-blue);
+    color: var(--text-light);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-family: "Fira Code", monospace;
+    font-weight: 500;
+}
+
+.game-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-button-king {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    background-color: transparent;
+    border: 2px solid var(--light-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.form-button-king:hover {
+    background-color: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.form-button-king.primary {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: var(--dark-blue);
+}
+
+.form-button-king.primary:hover {
+    background-color: transparent;
+    color: var(--accent-gold);
+}

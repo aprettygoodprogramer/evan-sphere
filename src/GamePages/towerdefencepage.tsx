@@ -1,31 +1,32 @@
-import "../App.css";
-import Text from "../comp/text";
-import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-const towerDefence = () => {
-  return (
-    <div className="page-background">
-      <Outlet />
-      <div className="game-container">
-        <iframe src="https://itch.io/embed/2237383" width="552" height="167">
-          <a href="https://slimybridge.itch.io/super-defender-td">
-            Super Defender TD by SlimyBridge
-          </a>
-        </iframe>
-      </div>
+import "./GameEmbed.css"; // Reuse the same stylesheet from the last step!
 
-      <Text size="medium" weight="bold" color="white" className="game-text">
-        Welcome To Spaceship Game! I made this over the 2023 summer. Tap on the
-        units to upgrade them!!!
-      </Text>
-      <div className="button-container">
-        <button className="github-button">
-          <Link to="/">back to home page</Link>
-          <Outlet />
-        </button>
+const TowerDefence = () => {
+  return (
+    <div className="game-embed-page-container">
+      <div className="game-embed-content">
+        <h1 className="game-embed-title">Super Defender TD</h1>
+
+        {/* The same responsive iframe container */}
+        <div className="iframe-container">
+          <iframe
+            src="https://itch.io/embed/2237383"
+            title="Super Defender TD by SlimyBridge on itch.io"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        <p className="game-description">
+          Welcome! I made this game over the 2023 summer. Tap on the units to
+          upgrade them!
+        </p>
+
+        <Link to="/" className="form-button-king">
+          Back to Home
+        </Link>
       </div>
     </div>
   );
 };
 
-export default towerDefence;
+export default TowerDefence;

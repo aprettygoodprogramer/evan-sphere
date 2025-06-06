@@ -5,7 +5,6 @@ import "./cock.css";
 const App = () => {
   return (
     <div className="portfolio">
-      {/* Header */}
       <header className="header">
         <div className="container">
           <div className="logo">ED</div>
@@ -19,7 +18,6 @@ const App = () => {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="hero">
         <div className="container">
           <div className="hero-content">
@@ -75,7 +73,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* About */}
       <section className="about" id="about">
         <div className="container">
           <div className="section-header">
@@ -165,7 +162,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Projects */}
       <section className="projects" id="projects">
         <div className="container">
           <div className="section-header">
@@ -212,7 +208,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Journey */}
       <section className="journey" id="journey">
         <div className="container">
           <div className="section-header">
@@ -252,7 +247,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="footer" id="contact">
         <div className="container">
           <div className="footer-content">

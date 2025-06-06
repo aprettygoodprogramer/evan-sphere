@@ -1,31 +1,32 @@
-import "../App.css";
-import Text from "../comp/text";
-import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-const SpaceshipGamea = () => {
-  return (
-    <div className="page-background">
-      <Outlet />
-      <div className="game-container">
-        <iframe src="https://itch.io/embed/2928092" width="552" height="167">
-          <a href="https://slimybridge.itch.io/space-adventure">
-            Space Adventure by SlimyBridge
-          </a>
-        </iframe>
-      </div>
+import "./GameEmbed.css"; // Import the new stylesheet
 
-      <Text size="medium" weight="bold" color="white" className="game-text">
-        Welcome To Spaceship Game! I made this over the 2024 summer. The dev
-        menu is open; if you don't want to use it, just press F7!
-      </Text>
-      <div className="button-container">
-        <button className="github-button">
-          <Link to="/">back to home page</Link>
-          <Outlet />
-        </button>
+const SpaceshipGame = () => {
+  return (
+    <div className="game-embed-page-container">
+      <div className="game-embed-content">
+        <h1 className="game-embed-title">Space Adventure</h1>
+
+        {/* This container makes the iframe responsive */}
+        <div className="iframe-container">
+          <iframe
+            src="https://itch.io/embed/2928092"
+            title="Space Adventure by SlimyBridge on itch.io"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        <p className="game-description">
+          Welcome! I made this game over the 2024 summer. The dev menu is open;
+          if you don't want to use it, just press F7!
+        </p>
+
+        <Link to="/" className="form-button-king">
+          Back to Home
+        </Link>
       </div>
     </div>
   );
 };
 
-export default SpaceshipGamea;
+export default SpaceshipGame;

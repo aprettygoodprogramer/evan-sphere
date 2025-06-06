@@ -1,157 +1,164 @@
-@import url("https://fonts.googleapis.com/css2?family=Font1&family=Font2&display=swap");
-
-@keyframes tracking-in-contract-bck {
-    0% {
-        letter-spacing: 1em;
-        transform: translateZ(400px);
-        opacity: 0;
-    }
-    40% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateZ(0);
-        opacity: 1;
-    }
+/* 1. CSS Variables and Global Styles */
+:root {
+    --dark-blue: #0b2545;
+    --mid-blue: #13315c;
+    --light-blue: #134074;
+    --accent-gold: #fdc500;
+    --text-light: #e2e8f0;
+    --text-muted: #94a3b8;
+    --bg-glass: rgba(19, 49, 92, 0.5);
+    --border-color: rgba(253, 197, 0, 0.15);
 }
 
-@keyframes scale-in-ver-center {
-    0% {
-        transform: scaleY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: scaleY(1);
-        opacity: 1;
-    }
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-.h1 {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    font-family: "Font2", serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* 3. Hero Section */
+.hero {
     text-align: center;
-    animation: tracking-in-contract-bck 4s cubic-bezier(0.215, 0.61, 0.355, 1)
-        both;
+    padding: 4rem 0;
+    margin-bottom: 4rem;
 }
 
-.p1 {
-    font-family: "Font1", sans-serif;
-    text-align: center;
-    margin-top: 450px;
-    animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--accent-gold), #ffeb3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-
-.github-button {
-    background: linear-gradient(to right, black, #121222);
-    padding: 10px 20px;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.7;
 }
 
-.github-button a {
-    color: inherit;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.game-container {
-    display: flex;
-    justify-content: center;
+.hero-button {
+    display: inline-flex;
     align-items: center;
-    width: 100%;
-    height: 70vh;
+    gap: 0.75rem;
+    background: var(--accent-gold);
+    color: var(--dark-blue);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-gold);
+    font-size: 1rem;
 }
 
-.game-frame {
-    width: 80%;
-    height: 100%;
-    border: none;
+.hero-button:hover {
+    background: transparent;
+    color: var(--accent-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(253, 197, 0, 0.2);
 }
 
-.game-text {
-    margin-top: 20px;
-    text-align: center;
-    font-family: "Font1", sans-serif;
-    color: white;
-}
-
-.button-container {
-    position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.restart-contanter {
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    transform: translateY(-50%);
-}
-
-.button-container51 {
-    color: #121222;
-}
-
-.h1-no-animation {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    font-family: "Font2", serif;
-    text-align: center;
-}
-
-.p1-no-animation {
-    font-family: "Font1", sans-serif;
-    text-align: center;
-    margin-top: 450px;
-}
-
-.sigma {
-    background: linear-gradient(to right, black, #121222);
-    padding: 5px 10px;
-    color: rgba(41, 41, 41, 0.5);
-    text-align: center;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    animation: scale-in-ver-center 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    transform: scale(0.75);
-}
-
-.task-manager-task {
-    background: linear-gradient(to right, rgb(62, 62, 62), #28284b);
-    padding: 10px 20px;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.blog-image {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-    object-fit: contain;
-    max-height: 70vh;
-}
-
-.centerAligned {
+/* 4. Projects Grid */
+.projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(253, 197, 0, 0.4);
+}
+
+.project-card-icon {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+}
+
+.project-card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+}
+
+.project-card-description {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-card-link {
+    color: var(--accent-gold);
+    font-weight: 600;
+    align-self: flex-start;
+    margin-top: auto;
+    /* Pushes the link to the bottom */
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-card-link {
+    color: #fff;
+}
+
+/* 5. Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .hero {
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
