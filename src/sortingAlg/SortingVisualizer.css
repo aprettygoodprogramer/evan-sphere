@@ -1,0 +1,165 @@
+/* Inherit variables from App.css for consistency */
+:root {
+    --dark-blue: #0b2545;
+    --mid-blue: #13315c;
+    --light-blue: #134074;
+    --accent-gold: #fdc500;
+    --text-light: #e2e8f0;
+    --text-muted: #94a3b8;
+    --bg-glass: rgba(19, 49, 92, 0.5);
+    --border-color: rgba(253, 197, 0, 0.15);
+    --sorted-green: #4ade80;
+    /* A nice green for sorted elements */
+}
+
+.visualizer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.visualizer-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* Bar Visualization Area */
+.bar-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 320px;
+    /* MAX_BAR_HEIGHT + padding */
+    width: 100%;
+    margin: 0 auto 2rem auto;
+    padding: 10px;
+    background: rgba(11, 37, 69, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.bar {
+    width: 12px;
+    margin: 0 2px;
+    background-color: var(--light-blue);
+    transition: height 0.2s ease, background-color 0.2s ease;
+}
+
+.bar-active {
+    background-color: var(--accent-gold);
+}
+
+.bar-sorted {
+    background-color: var(--sorted-green);
+}
+
+/* Control Panels */
+.controls-panel,
+.settings-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.controls-panel button,
+.step-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid var(--light-blue);
+    background-color: transparent;
+    color: var(--text-light);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.controls-panel button:hover:not(:disabled) {
+    background-color: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.controls-panel button.primary {
+    border-color: var(--accent-gold);
+    background-color: var(--accent-gold);
+    color: var(--dark-blue);
+}
+
+.controls-panel button.primary:hover:not(:disabled) {
+    background-color: transparent;
+    color: var(--accent-gold);
+}
+
+.controls-panel button:disabled,
+.step-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Settings: Slider and Checkbox */
+.settings-panel {
+    background: rgba(11, 37, 69, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.slider-control,
+.checkbox-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.slider-control input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 8px;
+    background: var(--dark-blue);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.slider-control input[type="range"]:hover {
+    opacity: 1;
+}
+
+.slider-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-gold);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider-control input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-gold);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.checkbox-control input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-gold);
+}

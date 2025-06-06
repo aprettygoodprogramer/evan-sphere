@@ -1,91 +1,130 @@
-import React, { useState, useEffect } from "react";
-import Text from "../comp/text";
-import { Outlet, Link } from "react-router-dom";
-import LetterInput from "./comp/singleLetterInput";
+import React, { useState, FormEvent } from "react";
+import { Link } from "react-router-dom";
+import "./Hangman.css"; 
+
 import words from "./wordlist.json";
-import "../App.css";
+
 
 const hangImages = [
-  "https://i.imgur.com/pm1lAxA.png", // Hang 1
-  "https://i.imgur.com/Sa9eHw4.png", // Hang 2
-  "https://i.imgur.com/zyPruez.png", // Hang 3
-  "https://i.imgur.com/NBqB0YF.png", // Hang 4
-  "https://i.imgur.com/Z8pqLp9.png", // Hang 5
-  "https://i.imgur.com/XslnI6Q.png", // Hang 6
+  "https://i.imgur.com/pm1lAxA.png", // 0 wrong guesses
+  "https://i.imgur.com/Sa9eHw4.png", // 1
+  "https://i.imgur.com/zyPruez.png", // 2
+  "https://i.imgur.com/NBqB0YF.png", // 3
+  "https://i.imgur.com/Z8pqLp9.png", // 4
+  "https://i.imgur.com/XslnI6Q.png", // 5 (Game Over)
 ];
+const MAX_WRONG_GUESSES = hangImages.length - 1;
 
-function GetRandomWord() {
+// --- Helper Functions ---
+const getRandomWord = () => {
   const randomIndex = Math.floor(Math.random() * words.length);
-  return words[randomIndex];
-}
+  return words[randomIndex].toUpperCase();
+};
 
+// --- Component ---
 function HangMan() {
-  const [word, setWord] = useState<string>(GetRandomWord());
-  const [Hangindex, setHangindex] = useState<number>(1);
-  const [currHang, setCurrHang] = useState<string>(hangImages[0]);
+  const [word, setWord] = useState<string>(getRandomWord());
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
-  const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [wrongGuesses, setWrongGuesses] = useState<number>(0);
+  const [inputValue, setInputValue] = useState<string>("");
 
-  useEffect(() => {
-    setCurrHang(hangImages[Hangindex - 1] || hangImages[0]);
-    if (Hangindex >= 6) {
-      setIsGameOver(true);
-    }
-  }, [Hangindex]);
+  const isWin = word.split("").every((letter) => guessedLetters.has(letter));
+  const isLoss = wrongGuesses >= MAX_WRONG_GUESSES;
+  const isGameOver = isWin || isLoss;
 
   const handleGuess = (letter: string) => {
-    if (isGameOver || guessedLetters.has(letter)) return;
-    setGuessedLetters((prev) => new Set(prev).add(letter));
+    const upperCaseLetter = letter.toUpperCase();
+    if (isGameOver || guessedLetters.has(upperCaseLetter)) return;
 
-    if (!word.includes(letter)) {
-      setHangindex((prev) => (prev < 6 ? prev + 1 : prev));
+    setGuessedLetters((prev) => new Set(prev).add(upperCaseLetter));
+
+    if (!word.includes(upperCaseLetter)) {
+      setWrongGuesses((prev) => prev + 1);
     }
   };
 
-  function restart() {
-    setWord(GetRandomWord());
-    setHangindex(1);
-    setCurrHang(hangImages[0]);
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (inputValue.match(/^[a-zA-Z]$/)) {
+      handleGuess(inputValue);
+    }
+    setInputValue("");
+  };
+
+  const restartGame = () => {
+    setWord(getRandomWord());
     setGuessedLetters(new Set());
-    setIsGameOver(false);
-  }
+    setWrongGuesses(0);
+    setInputValue("");
+  };
+
+  const displayedWord = word
+    .split("")
+    .map((char) => (guessedLetters.has(char) ? char : "_"))
+    .join(" ");
 
   return (
-    <a className="page-background">
-      <Text size="large" weight="bold" color="white" className="h1">
-        {isGameOver
-          ? `Game Over! The word was: ${word}`
-          : word
-              .split("")
-              .map((char) => (guessedLetters.has(char) ? char : "_"))
-              .join(" ")}
-      </Text>
+    <div className="hangman-container">
+      <div className="game-area">
+        <img
+          src={hangImages[wrongGuesses]}
+          alt={`Hangman state with ${wrongGuesses} wrong guesses`}
+          className="hangman-image"
+        />
+        <div className="game-info">
+          <p className="game-status">
+            {isGameOver
+              ? isWin
+                ? "Congratulations, You Won!"
+                : "Game Over!"
+              : "Guess the word:"}
+          </p>
+          <h1
+            className={`word-display ${isWin ? "win" : ""} ${
+              isLoss ? "loss" : ""
+            }`}
+          >
+            {isLoss ? word : displayedWord}
+          </h1>
 
-      {!isGameOver && <LetterInput onSubmit={handleGuess} />}
+          {!isGameOver && (
+            <form onSubmit={handleSubmit} className="guess-form">
+              <input
+                type="text"
+                maxLength={1}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                className="letter-input"
+                autoFocus
+              />
+              <button type="submit" className="form-button-king">
+                Guess
+              </button>
+            </form>
+          )}
 
-      <img
-        src={currHang}
-        alt={`hang${Hangindex}`}
-        width={284}
-        height={392}
-        style={{ marginTop: "20px" }}
-      />
-
-      <div className="button-container">
-        <button className="github-button">
-          <Link to="/">Back to Home Page</Link>
-          <Outlet />
-        </button>
+          <div className="guessed-letters">
+            <p>Guessed:</p>
+            <div className="letter-chips">
+              {[...guessedLetters].sort().map((letter) => (
+                <span key={letter} className="letter-chip">
+                  {letter}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="restart-container">
-        <button className="github-button" onClick={restart}>
-          Restart
-          <Outlet />
+      <div className="game-controls">
+        <button onClick={restartGame} className="form-button-king primary">
+          New Game
         </button>
+        <Link to="/" className="form-button-king">
+          Back to Home
+        </Link>
       </div>
-      <Outlet />
-    </a>
+    </div>
   );
 }
 
