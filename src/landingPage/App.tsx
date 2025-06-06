@@ -37,7 +37,7 @@ const projects = [
     to: "/SpaceShipGame",
     title: "Spaceship Game",
     Icon: FaRocket,
-    description: "A fun arcade-style game. Dodge the asteroids and survive!",
+    description: "A fun strategy game where you build and manage a spaceship.",
   },
   {
     to: "/TowerDefence",

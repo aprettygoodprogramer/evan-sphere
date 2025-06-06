@@ -54,16 +54,16 @@ const App = () => {
                 <div className="code-content">
                   <div className="code-line">
                     <span className="code-keyword">const</span>
-                    <span className="code-variable"> evan</span>
+                    <span className="code-variable"> name</span>
                     <span className="code-operator"> = </span>
-                    <span className="code-string">"locked-in"</span>
+                    <span className="code-string">"Evan"</span>
                   </div>
                   <div className="code-line">
                     <span className="code-keyword">console</span>
                     <span className="code-operator">.</span>
                     <span className="code-method">log</span>
                     <span className="code-operator">(</span>
-                    <span className="code-string">"I use Arch btw"</span>
+                    <span className="code-string">"I'm +" name</span>
                     <span className="code-operator">)</span>
                   </div>
                 </div>
