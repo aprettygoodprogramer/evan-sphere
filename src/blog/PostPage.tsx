@@ -48,26 +48,29 @@ const PostPage = () => {
 
   if (loading)
     return (
-      <div className="loading" style={{ color: "white" }}>
+      <div className="loading" style={{ color: "white", fontSize: "1.25rem" }}>
         Loading post...
       </div>
     );
   if (error)
     return (
-      <div className="error" style={{ color: "white" }}>
+      <div className="error" style={{ color: "white", fontSize: "1.25rem" }}>
         Error: {error}
       </div>
     );
   if (!post)
     return (
-      <div className="error" style={{ color: "white" }}>
+      <div className="error" style={{ color: "white", fontSize: "1.25rem" }}>
         Post not found
       </div>
     );
 
   return (
     <article className="post-content" style={{ color: "white" }}>
-      <h1 className="post-title" style={{ color: "white" }}>
+      <h1
+        className="post-title"
+        style={{ color: "white", fontSize: "3rem" }} // Bigger title
+      >
         {post.title}
       </h1>
       <div className="post-meta" style={{ color: "#cccccc" }}>
