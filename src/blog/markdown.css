@@ -1,14 +1,27 @@
 .markdown-body {
-  line-height: 1.6;
+  line-height: 1.7;
   color: white;
   background-color: transparent !important;
+  font-size: 1.125rem; /* Base font size (18px) */
 }
 
-.markdown-body h1, 
-.markdown-body h2, 
+.markdown-body h1,
+.markdown-body h2,
 .markdown-body h3 {
   margin: 1.5em 0 1em;
   color: white;
+}
+
+.markdown-body h1 {
+  font-size: 2.25rem; /* Bigger H1 */
+}
+
+.markdown-body h2 {
+  font-size: 1.875rem; /* Bigger H2 */
+}
+
+.markdown-body h3 {
+  font-size: 1.5rem; /* Bigger H3 */
 }
 
 .markdown-body p {
@@ -22,12 +35,14 @@
   border-radius: 6px;
   overflow-x: auto;
   color: white;
+  font-size: 1rem; /* Adjusted code block font size */
 }
 
 .markdown-body code {
   font-family: Monaco, monospace;
   color: white;
   background-color: #2d2d2d;
+  font-size: 0.9rem; /* Adjusted inline code font size */
 }
 
 .markdown-body a {
@@ -40,18 +55,26 @@
   color: #cccccc;
 }
 
+/* --- MODIFIED RULE --- */
 .post-content {
   color: white;
+  max-width: 800px; /* Set a max width for readability */
+  margin: 2rem auto; /* Center the block with vertical spacing */
+  padding: 0 1.5rem; /* Add horizontal padding for mobile */
 }
 
 .post-title {
   color: white !important;
+  font-size: 3rem; /* BIG title */
 }
 
 .post-meta {
   color: #cccccc;
+  font-size: 1rem; /* Slightly bigger meta text */
 }
 
-.loading, .error {
+.loading,
+.error {
   color: white;
+  font-size: 1.25rem; /* Bigger status messages */
 }
