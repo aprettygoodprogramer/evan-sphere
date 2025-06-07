@@ -22,16 +22,34 @@ const projects = [
     description: "A professional showcase of my skills, projects, and journey.",
   },
   {
-    to: "/pathfinding",
-    title: "Pathfinding Visualizer",
-    Icon: FaRoute,
-    description: "Watch algorithms like A* find the shortest path in a grid.",
+    to: "/blog",
+    title: "My Blog",
+    Icon: FaBlog,
+    description: "Read my thoughts and articles on tech and development.",
   },
   {
     to: "/sortingAlg",
     title: "Sorting Visualizer",
     Icon: FaSortAmountUp,
     description: "See classic sorting algorithms like Bubble Sort in action.",
+  },
+  {
+    to: "/pathfinding",
+    title: "Pathfinding Visualizer",
+    Icon: FaRoute,
+    description: "Watch algorithms like A* find the shortest path in a grid.",
+  },
+  {
+    to: "/ProceduralContentGenerator",
+    title: "Perlin Noise Generator",
+    Icon: FaDiceD6,
+    description: "Generate and visualize 2D procedural noise maps.",
+  },
+  {
+    to: "/TimeManager",
+    title: "Task Manager",
+    Icon: FaTasks,
+    description: "A simple utility to organize your tasks and boost productivity.",
   },
   {
     to: "/SpaceShipGame",
@@ -46,28 +64,10 @@ const projects = [
     description: "Defend your base from waves of enemies in this classic TD.",
   },
   {
-    to: "/ProceduralContentGenerator",
-    title: "Perlin Noise Generator",
-    Icon: FaDiceD6,
-    description: "Generate and visualize 2D procedural noise maps.",
-  },
-  {
     to: "/hangman",
     title: "Hangman",
     Icon: FaUserSecret,
     description: "The classic word-guessing game brought to the web.",
-  },
-  {
-    to: "/TimeManager",
-    title: "Task Manager",
-    Icon: FaTasks,
-    description: "A simple utility to organize your tasks and boost productivity.",
-  },
-  {
-    to: "/blog",
-    title: "My Blog",
-    Icon: FaBlog,
-    description: "Read my thoughts and articles on tech and development.",
   },
 ];
 
