@@ -13,7 +13,6 @@ import {
 } from "react-icons/fa";
 import "../App.css";
 
-// Storing projects in an array makes the code cleaner and easier to update.
 const projects = [
   {
     to: "/portfolio",
@@ -22,22 +21,16 @@ const projects = [
     description: "A professional showcase of my skills, projects, and journey.",
   },
   {
-    to: "/blog",
-    title: "My Blog",
-    Icon: FaBlog,
-    description: "Read my thoughts and articles on tech and development.",
-  },
-  {
     to: "/sortingAlg",
     title: "Sorting Visualizer",
     Icon: FaSortAmountUp,
     description: "See classic sorting algorithms like Bubble Sort in action.",
   },
   {
-    to: "/pathfinding",
-    title: "Pathfinding Visualizer",
-    Icon: FaRoute,
-    description: "Watch algorithms like A* find the shortest path in a grid.",
+    to: "/blog",
+    title: "My Blog",
+    Icon: FaBlog,
+    description: "Read my thoughts and articles on tech and development.",
   },
   {
     to: "/ProceduralContentGenerator",
@@ -49,13 +42,20 @@ const projects = [
     to: "/TimeManager",
     title: "Task Manager",
     Icon: FaTasks,
-    description: "A simple utility to organize your tasks and boost productivity.",
+    description:
+      "A simple utility to organize your tasks and boost productivity.",
   },
   {
     to: "/SpaceShipGame",
     title: "Spaceship Game",
     Icon: FaRocket,
     description: "A fun strategy game where you build and manage a spaceship.",
+  },
+  {
+    to: "/pathfinding",
+    title: "Pathfinding Visualizer",
+    Icon: FaRoute,
+    description: "Watch algorithms like A* find the shortest path in a grid.",
   },
   {
     to: "/TowerDefence",
@@ -74,49 +74,57 @@ const projects = [
 function App() {
   return (
     <div className="app-shell">
+      <div className="background-overlay"></div>
       <main className="container">
         <header className="hero">
-          <h1 className="hero-title">Evan-Sphere</h1>
+          <h1 className="hero-title">
+            <span className="gradient-text">Evan-Sphere</span>
+          </h1>
           <p className="hero-subtitle">
             Welcome! This is my personal digital space where I host all my
             projects and experiments. Explore, play, and see what I've been
             building.
           </p>
           <a
-            href="https://github.com/aprettygoodprogramer" // <-- TODO: Add your GitHub username here
+            href="https://github.com/aprettygoodprogramer"
             className="hero-button"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub /> View on GitHub
+            <FaGithub />
+            <span>View on GitHub</span>
           </a>
         </header>
 
         <section className="projects-section">
+          <h2 className="section-title">Featured Projects</h2>
           <div className="projects-grid">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <Link
                 to={project.to}
                 key={project.to}
                 className="project-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="project-card-icon">
-                  <project.Icon />
+                <div className="project-card-glow"></div>
+                <div className="project-card-content">
+                  <div className="project-card-icon">
+                    <project.Icon />
+                  </div>
+                  <div>
+                    <h3 className="project-card-title">{project.title}</h3>
+                    <p className="project-card-description">
+                      {project.description}
+                    </p>
+                  </div>
+                  <span className="project-card-link">View Project &rarr;</span>
                 </div>
-                <div>
-                  <h3 className="project-card-title">{project.title}</h3>
-                  <p className="project-card-description">
-                    {project.description}
-                  </p>
-                </div>
-                <span className="project-card-link">View Project &rarr;</span>
               </Link>
             ))}
           </div>
         </section>
       </main>
 
-      {/* The Outlet will render your specific project pages below the grid */}
       <div className="container">
         <Outlet />
       </div>

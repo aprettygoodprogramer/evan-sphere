@@ -10,11 +10,364 @@
     --border-color: rgba(253, 197, 0, 0.15);
 }
 
+/* 1. CSS Variables and Global Styles */
+:root {
+    --dark-blue: #0b2545;
+    --mid-blue: #13315c;
+    --light-blue: #134074;
+    --accent-gold: #fdc500;
+    --text-light: #e2e8f0;
+    --text-muted: #94a3b8;
+    --bg-glass: rgba(19, 49, 92, 0.5);
+    --border-color: rgba(253, 197, 0, 0.15);
+    --gradient-1: linear-gradient(135deg, #0b2545 0%, #13315c 50%, #134074 100%);
+    --gradient-2: linear-gradient(45deg, #fdc500 0%, #ffeb3b 50%, #ff9800 100%);
+    --gradient-3: linear-gradient(135deg, rgba(253, 197, 0, 0.1) 0%, rgba(19, 49, 92, 0.3) 100%);
+}
+
 body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+    background:
+        radial-gradient(ellipse at top left, rgba(253, 197, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(19, 49, 92, 0.8) 0%, transparent 50%),
+        linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 50%, var(--light-blue) 100%);
+    background-size: 100% 100%, 100% 100%, 400% 400%;
+    animation: gradientShift 20s ease infinite;
     color: var(--text-light);
     line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(253, 197, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(19, 49, 92, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(19, 64, 116, 0.2) 0%, transparent 50%);
+    z-index: -1;
+    animation: float 15s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%, 0% 50%, 0% 50%; }
+    50% { background-position: 100% 50%, 100% 50%, 100% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(0.5deg); }
+    66% { transform: translateY(5px) rotate(-0.5deg); }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* 3. Hero Section */
+.hero {
+    text-align: center;
+    padding: 6rem 0;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(253, 197, 0, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffeb3b 30%, #ff9800 60%, var(--accent-gold) 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGradient 3s ease infinite;
+    text-shadow: 0 0 30px rgba(253, 197, 0, 0.3);
+    position: relative;
+}
+
+@keyframes textGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffeb3b 100%);
+    color: var(--dark-blue);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(253, 197, 0, 0.3);
+    opacity: 0;
+    animation: fadeInUp 1s ease 1s both;
+}
+
+.hero-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+.hero-button:hover::before {
+    left: 100%;
+}
+
+.hero-button:hover {
+    background: transparent;
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(253, 197, 0, 0.4);
+}
+
+/* 4. Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: linear-gradient(135deg,
+        rgba(19, 49, 92, 0.8) 0%,
+        rgba(19, 64, 116, 0.6) 50%,
+        rgba(19, 49, 92, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.6s ease-out both;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+.project-card:nth-child(7) { animation-delay: 0.7s; }
+.project-card:nth-child(8) { animation-delay: 0.8s; }
+.project-card:nth-child(9) { animation-delay: 0.9s; }
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--accent-gold), #ffeb3b, #ff9800);
+    border-radius: 20px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border-color: rgba(253, 197, 0, 0.6);
+    background: linear-gradient(135deg,
+        rgba(19, 49, 92, 0.9) 0%,
+        rgba(19, 64, 116, 0.8) 50%,
+        rgba(19, 49, 92, 0.9) 100%);
+}
+
+.project-card-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffeb3b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-card-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 10px rgba(253, 197, 0, 0.5));
+}
+
+.project-card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-card-title {
+    color: var(--accent-gold);
+}
+
+.project-card-description {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-card-description {
+    color: #b8c5d1;
+}
+
+.project-card-link {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffeb3b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    align-self: flex-start;
+    margin-top: auto;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-card-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffeb3b 100%);
+    transition: width 0.3s ease;
+}
+
+.project-card:hover .project-card-link {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    transform: translateX(5px);
+}
+
+.project-card:hover .project-card-link::after {
+    width: 100%;
+}
+
+/* 5. Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .hero {
+        padding: 4rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+}
     margin: 0;
     overflow-x: hidden;
     min-height: 100vh;
@@ -42,11 +395,7 @@ body {
 
 .hero-title {
     font-size: 4.5rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, var(--accent-gold), #ffeb3b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
     background-clip: text;
 }
 
@@ -60,11 +409,7 @@ body {
 
 .hero-button {
     display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--accent-gold);
-    color: var(--dark-blue);
-    padding: 1rem 2rem;
+
     text-decoration: none;
     font-weight: 600;
     border-radius: 8px;
@@ -73,10 +418,6 @@ body {
     font-size: 1rem;
 }
 
-.hero-button:hover {
-    background: transparent;
-    color: var(--accent-gold);
-    transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(253, 197, 0, 0.2);
 }
 
@@ -87,10 +428,6 @@ body {
     gap: 2rem;
 }
 
-.project-card {
-    background: var(--bg-glass);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 2rem;
     text-decoration: none;
     color: var(--text-light);

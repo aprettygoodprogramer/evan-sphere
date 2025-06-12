@@ -26,20 +26,25 @@ const App = () => {
               <h1 className="hero-name">Evan Ducas</h1>
               <h2 className="hero-title">Locked-in Developer & Creator</h2>
               <p className="hero-description">
-                I'm a passionate 14-year-old programmer who uses Arch (btw) and Windows. 
-                Yes, it's possible! Currently building cool stuff and preparing for 
-                high school in 2025-2026.
+                I'm a passionate 14-year-old programmer who uses Arch (btw) and
+                Windows. Yes, it's possible! Currently building cool stuff and
+                preparing for high school in 2025-2026.
               </p>
               <div className="hero-actions">
-                <a 
-                  href="https://github.com/aprettygoodprogramer" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/aprettygoodprogramer"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
                 >
                   Check My Code
                 </a>
-                <a href="https://www.quizlitic.com/" target="_blank" rel="noopener noreferrer" className="btn-outline">
+                <a
+                  href="https://www.quizlitic.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline"
+                >
                   See Quizlitic
                 </a>
               </div>
@@ -82,24 +87,24 @@ const App = () => {
           <div className="about-content">
             <div className="about-text">
               <p>
-                I'm a passionate programmer who genuinely loves what I do. I run both 
-                Arch Linux and Windows because why limit yourself to one OS when you 
-                can master both? I'm that locked-in individual who started coding at 8 
-                and haven't stopped since.
+                I'm a passionate programmer who genuinely loves what I do. I run
+                both Arch Linux on my Thinkpad, and windows on my desktop. I
+                love programming, and I'm always looking for new challenges to
+                tackle.
               </p>
               <p>
-                Currently working on some exciting projects while preparing for high school. 
-                When I'm not coding, you'll find me gaming on Hypixel or CS2, but let's be 
-                real - I'm usually coding.
+                Currently working on some exciting projects while preparing for
+                high school. When I'm not coding, you'll find me gaming on
+                Hypixel or CS2, but let's be real - I'm usually coding.
               </p>
               <div className="fun-facts">
                 <h3>Quick Facts</h3>
                 <ul>
-                  <li>🐧 Uses Arch Linux (btw)</li>
-                  <li>🎮 Plays Hypixel & CS2</li>
-                  <li>🔒 Locked-in mindset</li>
-                  <li>📚 Starting high school 2025-2026</li>
-                  <li>⚡ Been coding since age 8</li>
+                  <li>Uses Arch Linux (btw)</li>
+                  <li>Plays Hypixel & CS2</li>
+                  <li>Locked int</li>
+                  <li>Starting high school 2025-2026</li>
+                  <li>Been coding since age 8</li>
                 </ul>
               </div>
             </div>
@@ -175,7 +180,7 @@ const App = () => {
                 <span className="project-status">🔭 Currently Working On</span>
               </div>
               <p className="project-description">
-                A comprehensive quiz platform that I'm actively developing. 
+                A comprehensive quiz platform that I'm actively developing.
                 Check it out and see what I'm building!
               </p>
               <div className="project-tech">
@@ -184,7 +189,12 @@ const App = () => {
                 <span>Full Stack</span>
               </div>
               <div className="project-links">
-                <a href="https://www.quizlitic.com/" target="_blank" rel="noopener noreferrer" className="project-link">
+                <a
+                  href="https://www.quizlitic.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
                   Live Site →
                 </a>
               </div>
@@ -195,11 +205,16 @@ const App = () => {
                 <span className="project-status">🚀 Coming Soon</span>
               </div>
               <p className="project-description">
-                Always working on something new! Check my GitHub for the latest 
+                Always working on something new! Check my GitHub for the latest
                 experiments and side projects.
               </p>
               <div className="project-links">
-                <a href="https://github.com/aprettygoodprogramer" target="_blank" rel="noopener noreferrer" className="project-link">
+                <a
+                  href="https://github.com/aprettygoodprogramer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
                   GitHub →
                 </a>
               </div>
@@ -219,28 +234,37 @@ const App = () => {
               <div className="timeline-year">2017</div>
               <div className="timeline-content">
                 <h3>Started Coding</h3>
-                <p>Began my programming journey at age 8. Started with basic concepts and fell in love with problem-solving.</p>
+                <p>
+                  Began my programming journey at age 8. Started with basic
+                  concepts and fell in love with problem-solving.
+                </p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2020</div>
               <div className="timeline-content">
                 <h3>Discovered Linux</h3>
-                <p>Got into Linux systems and eventually settled on Arch Linux. Yes, I use Arch btw. 🐧</p>
+                <p>Got into linux during covid, as it was my only laptop!</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2023</div>
               <div className="timeline-content">
                 <h3>Robotics & FTC</h3>
-                <p>Started participating in FIRST Tech Challenge, combining programming with real-world robotics.</p>
+                <p>
+                  Started participating in FIRST Tech Challenge, combining
+                  programming with real-world robotics.
+                </p>
               </div>
             </div>
             <div className="timeline-item active">
               <div className="timeline-year">2025</div>
               <div className="timeline-content">
                 <h3>Current Focus</h3>
-                <p>Working on Quizlitic, preparing for high school, and staying locked-in on continuous learning.</p>
+                <p>
+                  Working on Quizlitic, preparing for high school, and staying
+                  locked in.
+                </p>
               </div>
             </div>
           </div>
@@ -254,17 +278,28 @@ const App = () => {
               <h3>Let's Connect!</h3>
               <p>Always down to chat about code, tech, or gaming.</p>
               <div className="social-links">
-                <a href="https://github.com/aprettygoodprogramer" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/aprettygoodprogramer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   GitHub
                 </a>
-                <a href="https://www.evan-sphere.com" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.evan-sphere.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Evan Sphere
                 </a>
               </div>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 Evan Ducas. Epic website made by no one in particular 😉</p>
+            <p>
+              &copy; 2025 Evan Ducas. Epic website made by no one in particular
+              😉
+            </p>
           </div>
         </div>
       </footer>
