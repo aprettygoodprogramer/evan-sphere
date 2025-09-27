@@ -26,9 +26,9 @@ const App = () => {
               <h1 className="hero-name">Evan Ducas</h1>
               <h2 className="hero-title">Locked-in Developer & Creator</h2>
               <p className="hero-description">
-                I'm a passionate 14-year-old programmer who uses Arch (btw) and
+                I'm a passionate 15-year-old programmer who uses Arch (btw) and
                 Windows. Yes, it's possible! Currently building cool stuff and
-                preparing for high school in 2025-2026.
+                a highschool freshmen.
               </p>
               <div className="hero-actions">
                 <a

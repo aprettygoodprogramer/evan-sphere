@@ -141,6 +141,39 @@ const SortingVisualizer: React.FC = () => {
     return i + 1;
   };
 
+  // -------------------- Bogo Sort --------------------
+  const bogoSort = async () => {
+    setIsSorting(true);
+    const arr = [...array];
+    const n = arr.length;
+
+    const isSorted = (arr: number[]) => {
+      for (let i = 0; i < n - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    const shuffle = (arr: number[]) => {
+      for (let i = n - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    };
+
+    while (!isSorted(arr)) {
+      shuffle(arr);
+      setArray([...arr]);
+      setActiveIndices(Array.from(Array(n).keys()));
+      await delay();
+    }
+
+    setActiveIndices([]);
+    setIsSorting(false);
+  };
+
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
       <h1>Sorting Visualizer</h1>
@@ -220,6 +253,22 @@ const SortingVisualizer: React.FC = () => {
           }}
         >
           Quick Sort
+        </button>
+        <button
+          onClick={bogoSort}
+          disabled={isSorting}
+          style={{
+            padding: '10px 20px',
+            marginRight: '10px',
+            fontSize: '16px',
+            cursor: 'pointer',
+            border: 'none',
+            backgroundColor: '#333',
+            color: '#fff',
+            borderRadius: '4px',
+          }}
+        >
+          Bogo Sort
         </button>
         <button
           onClick={generateArray}
