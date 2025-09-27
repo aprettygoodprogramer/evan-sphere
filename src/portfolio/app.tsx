@@ -68,7 +68,7 @@ const App = () => {
                     <span className="code-operator">.</span>
                     <span className="code-method">log</span>
                     <span className="code-operator">(</span>
-                    <span className="code-string">"I'm +" name</span>
+                    <span className="code-string">"I'm " + name</span>
                     <span className="code-operator">)</span>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const App = () => {
                 <ul>
                   <li>Uses Arch Linux (btw)</li>
                   <li>Plays Hypixel & CS2</li>
-                  <li>Locked int</li>
+                  <li>Locked in</li>
                   <li>Starting high school 2025-2026</li>
                   <li>Been coding since age 8</li>
                 </ul>
@@ -126,7 +126,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Skills */}
       <section className="skills" id="skills">
         <div className="container">
           <div className="section-header">
@@ -171,7 +170,7 @@ const App = () => {
         <div className="container">
           <div className="section-header">
             <span className="section-number">03</span>
-            <h2>Current Projects</h2>
+            <h2>Featured Projects</h2>
           </div>
           <div className="projects-grid">
             <div className="project-card featured">
@@ -180,13 +179,14 @@ const App = () => {
                 <span className="project-status">🔭 Currently Working On</span>
               </div>
               <p className="project-description">
-                A comprehensive quiz platform that I'm actively developing.
-                Check it out and see what I'm building!
+                A comprehensive quiz platform with full-stack architecture.
+                Features user authentication, quiz creation, and real-time
+                scoring.
               </p>
               <div className="project-tech">
                 <span>React</span>
                 <span>TypeScript</span>
-                <span>Full Stack</span>
+                <span>Rust Backend</span>
               </div>
               <div className="project-links">
                 <a
@@ -195,30 +195,155 @@ const App = () => {
                   rel="noopener noreferrer"
                   className="project-link"
                 >
-                  Live Site →
+                  Live Site
                 </a>
               </div>
             </div>
+
             <div className="project-card">
               <div className="project-header">
-                <h3>More Projects</h3>
-                <span className="project-status">🚀 Coming Soon</span>
+                <h3>Evan Sphere</h3>
+                <span className="project-status">🌐 Live</span>
               </div>
               <p className="project-description">
-                Always working on something new! Check my GitHub for the latest
-                experiments and side projects.
+                My personal website and blog platform.
               </p>
+              <div className="project-tech">
+                <span>TypeScript</span>
+                <span>Rust Backend</span>
+                <span>Full Stack</span>
+              </div>
               <div className="project-links">
                 <a
-                  href="https://github.com/aprettygoodprogramer"
+                  href="https://www.evan-sphere.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="project-link"
                 >
-                  GitHub →
+                  Live Site
                 </a>
               </div>
             </div>
+
+            <div className="project-card">
+              <div className="project-header">
+                <h3>FTC Notes</h3>
+                <span className="project-status">🤖 Robotics</span>
+              </div>
+              <p className="project-description">
+                A note-taking and strategy platform for FIRST Tech Challenge
+                teams. Helps teams organize match data and robot performance.
+              </p>
+              <div className="project-tech">
+                <span>TypeScript</span>
+                <span>Rust Backend</span>
+                <span>Robotics</span>
+              </div>
+              <div className="project-links">
+                <a
+                  href="https://github.com/aprettygoodprogramer/FTCnotesBackend"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  Backend
+                </a>
+              </div>
+            </div>
+
+            <div className="project-card">
+              <div className="project-header">
+                <h3>Epic Auto Clicker</h3>
+                <span className="project-status">⚡ Utility</span>
+              </div>
+              <p className="project-description">
+                A high-performance auto-clicker built in C++ with customizable
+                settings.
+              </p>
+              <div className="project-tech">
+                <span>C++</span>
+                <span>Windows API</span>
+                <span>GUI</span>
+              </div>
+              <div className="project-links">
+                <a
+                  href="https://github.com/aprettygoodprogramer/EpicAutoClicker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  Code
+                </a>
+              </div>
+            </div>
+
+            <div className="project-card">
+              <div className="project-header">
+                <h3>Command Helper</h3>
+                <span className="project-status">🦀 CLI Tool</span>
+              </div>
+              <p className="project-description">
+                A Rust-based command-line utility that uses AI to help generate
+                bash commands for developers.
+              </p>
+              <div className="project-tech">
+                <span>Rust</span>
+                <span>CLI</span>
+                <span>Terminal</span>
+              </div>
+              <div className="project-links">
+                <a
+                  href="https://github.com/aprettygoodprogramer/commandHelper"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  Code
+                </a>
+              </div>
+            </div>
+
+            <div className="project-card">
+              <div className="project-header">
+                <h3>Simple Social Media</h3>
+                <span className="project-status">💬 Social Platform</span>
+              </div>
+              <p className="project-description">
+                A Reddit-like social media platform built in C# with user
+                accounts, posts, comments. Built as a proof of concept for local
+                social media platform.
+              </p>
+              <div className="project-tech">
+                <span>C#</span>
+                <span>Social Media</span>
+                <span>Backend</span>
+              </div>
+              <div className="project-links">
+                <a
+                  href="https://github.com/aprettygoodprogramer/SimpleSoicalMedia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="more-projects">
+            <p>
+              Want to see more? Check out my GitHub for experiments and side
+              projects!
+            </p>
+            <a
+              href="https://github.com/aprettygoodprogramer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              View All Projects
+            </a>
           </div>
         </div>
       </section>
