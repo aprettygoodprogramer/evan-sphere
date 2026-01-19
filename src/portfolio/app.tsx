@@ -93,8 +93,8 @@ const App = () => {
                 tackle.
               </p>
               <p>
-                Currently working on some exciting projects while preparing for
-                high school. When I'm not coding, you'll find me gaming on
+                Currently working on some exciting projects.
+                 When I'm not coding, you'll find me gaming on
                 Hypixel or CS2, but let's be real - I'm usually coding.
               </p>
               <div className="fun-facts">
