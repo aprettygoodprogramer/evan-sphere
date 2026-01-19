@@ -23,7 +23,7 @@ const App = () => {
           <div className="hero-content">
             <div className="hero-text">
               <span className="intro">Yo! My name's</span>
-              <h1 className="hero-name">Evan Ducas</h1>
+              <h1 className="hero-name">Evan</h1>
               <h2 className="hero-title">Locked-in Developer & Creator</h2>
               <p className="hero-description">
                 I'm a passionate 15-year-old programmer who uses Arch (btw) and
@@ -422,7 +422,7 @@ const App = () => {
           </div>
           <div className="footer-bottom">
             <p>
-              &copy; 2025 Evan Ducas. Epic website made by no one in particular
+              &copy; 2025 Evan. Epic website made by no one in particular
               😉
             </p>
           </div>
