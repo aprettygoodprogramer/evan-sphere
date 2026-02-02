@@ -40,7 +40,7 @@ const projects = [
   },
   {
     to: "/TowerDefence",
-    title: "Tower Defence",
+    title: "Tower Defense",
     description: "Defend your base from waves of enemies in this classic TD.",
   },
   {
