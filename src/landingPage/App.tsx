@@ -1,109 +1,90 @@
-import { Outlet, Link } from "react-router-dom";
-import "../App.css";
+import { Link } from "react-router-dom";
+import GithubIcon from "../components/GithubIcon";
+import PageShell from "../components/PageShell";
 
-const projects = [
-  {
-    to: "/portfolio",
-    title: "Developer Portfolio",
-    description: "A professional showcase of my skills, projects, and journey.",
-  },
-  {
-    to: "/sortingAlg",
-    title: "Sorting Visualizer",
-    description: "See classic sorting algorithms like Bubble Sort in action.",
-  },
-  {
-    to: "/blog",
-    title: "My Blog",
-    description: "Read my thoughts and articles on tech and development.",
-  },
-  {
-    to: "/ProceduralContentGenerator",
-    title: "Perlin Noise Generator",
-    description: "Generate and visualize 2D procedural noise maps.",
-  },
-  {
-    to: "/TimeManager",
-    title: "Task Manager",
-    description:
-      "A simple utility to organize your tasks and boost productivity.",
-  },
-  {
-    to: "/SpaceShipGame",
-    title: "Spaceship Game",
-    description: "A fun strategy game where you build and manage a spaceship.",
-  },
-  {
-    to: "/pathfinding",
-    title: "Pathfinding Visualizer",
-    description: "Watch algorithms like A* find the shortest path in a grid.",
-  },
-  {
-    to: "/TowerDefence",
-    title: "Tower Defense",
-    description: "Defend your base from waves of enemies in this classic TD.",
-  },
-  {
-    to: "/hangman",
-    title: "Hangman",
-    description: "The classic word-guessing game brought to the web.",
-  },
+const allPages = [
+  { to: "/portfolio", title: "Portfolio", desc: "My skills, projects, and journey." },
+  { to: "/blog", title: "Blog", desc: "Thoughts and articles on tech and dev." },
+  { to: "/sortingAlg", title: "Sorting Visualizer", desc: "Bubble, insertion, quick & bogo sort." },
+  { to: "/pathfinding", title: "Pathfinding Visualizer", desc: "BFS finds the shortest path." },
+  { to: "/ProceduralContentGenerator", title: "Perlin Noise Generator", desc: "Generate procedural terrain maps." },
+  { to: "/TimeManager", title: "Task Manager", desc: "A drag-and-drop kanban board." },
+  { to: "/hangman", title: "Hangman", desc: "The classic word-guessing game." },
+  { to: "/SpaceShipGame", title: "Spaceship Game", desc: "A strategy spaceship builder." },
+  { to: "/Towerdefence", title: "Tower Defense", desc: "Defend against waves of enemies." },
+ 
 ];
 
 function App() {
   return (
-    <div className="app-shell">
-      <div className="background-overlay"></div>
-      <main className="container">
-        <header className="hero">
-          <h1 className="hero-title">
-            <span className="gradient-text">Evan-Sphere</span>
-          </h1>
-          <p className="hero-subtitle">
-            Welcome! This is my personal digital space where I host all my
-            projects and experiments. Explore, play, and see what I've been
-            building.
-          </p>
+    <PageShell>
+      <h1 className="es-title">Evan Ducas</h1>
+
+      <p className="es-subtitle">
+        Hey, I'm Evan. I'm a 15 year old programmer.
+      </p>
+
+      <nav className="es-nav">
+        <Link to="/about" className="es-link">
+          more about me
+        </Link>
+        <Link to="/portfolio" className="es-link">
+          my portfolio
+        </Link>
+        <Link to="/contact" className="es-link">
+          contact me
+        </Link>
+      </nav>
+
+      <div className="es-icons">
+        <a
+          href="https://github.com/aprettygoodprogramer"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="es-icon"
+          aria-label="GitHub"
+        >
+          <GithubIcon size={24} />
+        </a>
+      </div>
+
+      <div className="es-prose" style={{ alignItems: "center", textAlign: "center" }}>
+        <p style={{ textAlign: "center" }}>
           <a
-            href="https://github.com/aprettygoodprogramer"
-            className="hero-button"
+            href="https://evan-sphere.com"
             target="_blank"
             rel="noopener noreferrer"
+            className="es-link"
           >
-            <span>View on GitHub</span>
+            evan-sphere.com
           </a>
-        </header>
-
-        <section className="projects-section">
-          <h2 className="section-title">Featured Projects</h2>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <Link
-                to={project.to}
-                key={project.to}
-                className="project-card"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="project-card-glow"></div>
-                <div className="project-card-content">
-                  <div>
-                    <h3 className="project-card-title">{project.title}</h3>
-                    <p className="project-card-description">
-                      {project.description}
-                    </p>
-                  </div>
-                  <span className="project-card-link">View Project &rarr;</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <div className="container">
-        <Outlet />
+        </p>
+        <p style={{ textAlign: "center" }}>
+          <a
+            href="https://quizlitic.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="es-link"
+          >
+            quizlitic.com
+          </a>
+        </p>
       </div>
-    </div>
+
+      <section className="es-explore" style={{ width: "100%", marginTop: "3rem" }}>
+        <p className="es-eyebrow">explore</p>
+        <h2 className="es-section-title">Everything on the site</h2>
+        <div className="es-grid">
+          {allPages.map((p) => (
+            <Link key={p.to} to={p.to} className="es-card">
+              <h3 className="es-card-title">{p.title}</h3>
+              <p className="es-card-desc">{p.desc}</p>
+              <span className="es-card-link">Open →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </PageShell>
   );
 }
 

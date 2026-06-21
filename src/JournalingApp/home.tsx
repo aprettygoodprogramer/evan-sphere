@@ -1,5 +1,5 @@
-import React from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import PageShell from "../components/PageShell";
 
 const Home: React.FC = () => {
   const handleLoginSuccess = (credentialResponse: any) => {
@@ -22,13 +22,19 @@ const Home: React.FC = () => {
 
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-      <div>
-        <h1>Hello World</h1>
-        <GoogleLogin
-          onSuccess={handleLoginSuccess}
-          onError={handleLoginFailure}
-        />
-      </div>
+      <PageShell backTo="/" backLabel="home" show3D>
+        <p className="es-eyebrow">journaling</p>
+        <h1 className="es-title">Journaling</h1>
+        <p className="es-subtitle">
+          Sign in with Google to start journaling.
+        </p>
+        <div style={{ marginTop: "1rem" }}>
+          <GoogleLogin
+            onSuccess={handleLoginSuccess}
+            onError={handleLoginFailure}
+          />
+        </div>
+      </PageShell>
     </GoogleOAuthProvider>
   );
 };

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import PageShell from '../components/PageShell';
+import './SortingVisualizer.css';
 
-// Constants to adjust the visualization.
 const ARRAY_SIZE = 50;
 const MAX_BAR_HEIGHT = 300;
 
@@ -25,7 +26,6 @@ const SortingVisualizer: React.FC = () => {
     setArray(newArray);
   };
 
-  // Custom delay function that either waits for a setTimeout or a manual step.
   const delay = () => {
     if (stepMode) {
       return new Promise<void>((resolve) => {
@@ -45,7 +45,6 @@ const SortingVisualizer: React.FC = () => {
     }
   };
 
-  // -------------------- Bubble Sort --------------------
   const bubbleSort = async () => {
     setIsSorting(true);
     const arr = [...array];
@@ -65,19 +64,15 @@ const SortingVisualizer: React.FC = () => {
     setIsSorting(false);
   };
 
-  // -------------------- Insertion Sort --------------------
   const insertionSort = async () => {
     setIsSorting(true);
     const arr = [...array];
-    // Start from the second element (first element is trivially sorted)
     for (let i = 1; i < arr.length; i++) {
       const key = arr[i];
       let j = i - 1;
-      // Highlight the current key element.
       setActiveIndices([i]);
       await delay();
 
-      // Shift elements of the sorted segment that are greater than the key.
       while (j >= 0 && arr[j] > key) {
         setActiveIndices([j, j + 1]);
         await delay();
@@ -94,7 +89,6 @@ const SortingVisualizer: React.FC = () => {
     setIsSorting(false);
   };
 
-  // -------------------- Quick Sort --------------------
   const quickSort = async () => {
     setIsSorting(true);
     const arr = [...array];
@@ -141,7 +135,6 @@ const SortingVisualizer: React.FC = () => {
     return i + 1;
   };
 
-  // -------------------- Bogo Sort --------------------
   const bogoSort = async () => {
     setIsSorting(true);
     const arr = [...array];
@@ -175,164 +168,56 @@ const SortingVisualizer: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h1>Sorting Visualizer</h1>
+    <PageShell backTo="/" backLabel="home">
+      <p className="es-eyebrow">algorithm</p>
+      <h1 className="es-title">Sorting Visualizer</h1>
 
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'center',
-          height: MAX_BAR_HEIGHT,
-          width: '80%',
-          margin: '0 auto 20px auto',
-          border: '1px solid #ccc',
-          background: '#fff',
-        }}
-      >
+      <div className="sort-bars">
         {array.map((value, idx) => (
           <div
             key={idx}
-            style={{
-              width: '20px',
-              margin: '0 2px',
-              backgroundColor: activeIndices.includes(idx) ? 'red' : 'teal',
-              height: `${value}px`,
-              transition: 'height 0.2s, background-color 0.2s',
-            }}
+            className={`sort-bar${activeIndices.includes(idx) ? ' sort-bar-active' : ''}`}
+            style={{ height: `${value}px` }}
           />
         ))}
       </div>
 
-      {/* Sorting Controls */}
-      <div style={{ marginBottom: '20px' }}>
-        <button
-          onClick={bubbleSort}
-          disabled={isSorting}
-          style={{
-            padding: '10px 20px',
-            marginRight: '10px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            border: 'none',
-            backgroundColor: '#333',
-            color: '#fff',
-            borderRadius: '4px',
-          }}
-        >
-          Bubble Sort
-        </button>
-        <button
-          onClick={insertionSort}
-          disabled={isSorting}
-          style={{
-            padding: '10px 20px',
-            marginRight: '10px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            border: 'none',
-            backgroundColor: '#333',
-            color: '#fff',
-            borderRadius: '4px',
-          }}
-        >
-          Insertion Sort
-        </button>
-        <button
-          onClick={quickSort}
-          disabled={isSorting}
-          style={{
-            padding: '10px 20px',
-            marginRight: '10px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            border: 'none',
-            backgroundColor: '#333',
-            color: '#fff',
-            borderRadius: '4px',
-          }}
-        >
-          Quick Sort
-        </button>
-        <button
-          onClick={bogoSort}
-          disabled={isSorting}
-          style={{
-            padding: '10px 20px',
-            marginRight: '10px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            border: 'none',
-            backgroundColor: '#333',
-            color: '#fff',
-            borderRadius: '4px',
-          }}
-        >
-          Bogo Sort
-        </button>
-        <button
-          onClick={generateArray}
-          disabled={isSorting}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            border: 'none',
-            backgroundColor: '#333',
-            color: '#fff',
-            borderRadius: '4px',
-          }}
-        >
-          Generate New Array
-        </button>
+      <div className="sort-controls">
+        <button className="es-btn" onClick={bubbleSort} disabled={isSorting}>Bubble Sort</button>
+        <button className="es-btn" onClick={insertionSort} disabled={isSorting}>Insertion Sort</button>
+        <button className="es-btn" onClick={quickSort} disabled={isSorting}>Quick Sort</button>
+        <button className="es-btn" onClick={bogoSort} disabled={isSorting}>Bogo Sort</button>
+        <button className="es-btn es-btn--solid" onClick={generateArray} disabled={isSorting}>New Array</button>
       </div>
 
-      {/* Speed Slider and Step Mode Toggle */}
-      <div style={{ marginBottom: '20px' }}>
-        <label style={{ marginRight: '10px' }}>
-          Speed (ms):
+      <div className="sort-settings">
+        <label className="sort-slider">
+          <span>Speed: {delayMs} ms</span>
           <input
             type="range"
             min="10"
             max="1000"
             value={delayMs}
             onChange={(e) => setDelayMs(Number(e.target.value))}
-            disabled={stepMode} // Disable speed slider in step mode.
-            style={{ marginLeft: '5px' }}
+            disabled={stepMode}
           />
-          <span style={{ marginLeft: '5px' }}>{delayMs} ms</span>
         </label>
-        <label style={{ marginLeft: '20px' }}>
-          Step Mode:
+        <label className="sort-checkbox">
           <input
             type="checkbox"
             checked={stepMode}
             onChange={(e) => setStepMode(e.target.checked)}
-            style={{ marginLeft: '5px' }}
           />
+          <span>Step mode</span>
         </label>
       </div>
 
-      {/* Next Step Button (visible only when in step mode and sorting is in progress) */}
       {stepMode && isSorting && (
-        <div style={{ marginBottom: '20px' }}>
-          <button
-            onClick={handleNextStep}
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              border: 'none',
-              backgroundColor: '#555',
-              color: '#fff',
-              borderRadius: '4px',
-            }}
-          >
-            Next Step
-          </button>
-        </div>
+        <button className="es-btn es-btn--solid" onClick={handleNextStep}>
+          Next Step
+        </button>
       )}
-    </div>
+    </PageShell>
   );
 };
 

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PageShell from "../components/PageShell";
 import "./ProceduralContentGenerator.css";
 
 interface FormParams {
@@ -44,11 +45,13 @@ const ProceduralContent: React.FC = () => {
   }
 
   return (
-    <div className="page-container">
-      <div className="left-half">
-        <h1>Procedural Content</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="slider-group">
+    <PageShell centered={false} backTo="/" backLabel="home">
+      <p className="es-eyebrow">tool</p>
+      <h1 className="es-title">Procedural Content</h1>
+
+      <div className="pcg-layout">
+        <form className="pcg-form" onSubmit={handleSubmit}>
+          <div className="pcg-slider">
             <label htmlFor="rooms">Zoom</label>
             <input
               id="rooms"
@@ -60,7 +63,7 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.rooms}</span>
           </div>
-          <div className="slider-group">
+          <div className="pcg-slider">
             <label htmlFor="seed">Seed</label>
             <input
               id="seed"
@@ -72,7 +75,7 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.seed}</span>
           </div>
-          <div className="slider-group">
+          <div className="pcg-slider">
             <label htmlFor="octaves">Octaves</label>
             <input
               id="octaves"
@@ -85,7 +88,7 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.octaves}</span>
           </div>
-          <div className="slider-group">
+          <div className="pcg-slider">
             <label htmlFor="persistence">Persistence</label>
             <input
               id="persistence"
@@ -98,7 +101,7 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.persistence.toFixed(2)}</span>
           </div>
-          <div className="slider-group">
+          <div className="pcg-slider">
             <label htmlFor="lacunarity">Lacunarity</label>
             <input
               id="lacunarity"
@@ -111,7 +114,7 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.lacunarity.toFixed(1)}</span>
           </div>
-          <div className="slider-group">
+          <div className="pcg-slider">
             <label htmlFor="seaLevel">Sea Level</label>
             <input
               id="seaLevel"
@@ -124,17 +127,20 @@ const ProceduralContent: React.FC = () => {
             />
             <span>{form.seaLevel.toFixed(2)}</span>
           </div>
-          <button type="submit">Generate</button>
+          <button type="submit" className="es-btn es-btn--solid">
+            Generate
+          </button>
         </form>
+
+        <div className="pcg-preview">
+          <img
+            src={imageUrl}
+            alt="Procedural terrain"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+        </div>
       </div>
-      <div className="right-half">
-        <img
-          src={imageUrl}
-          alt="Procedural terrain"
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-      </div>
-    </div>
+    </PageShell>
   );
 };
 

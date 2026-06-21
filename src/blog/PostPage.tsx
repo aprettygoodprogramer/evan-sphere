@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -46,34 +46,17 @@ const PostPage = () => {
     fetchPost();
   }, [slug]);
 
-  if (loading)
-    return (
-      <div className="loading" style={{ color: "white", fontSize: "1.25rem" }}>
-        Loading post...
-      </div>
-    );
-  if (error)
-    return (
-      <div className="error" style={{ color: "white", fontSize: "1.25rem" }}>
-        Error: {error}
-      </div>
-    );
-  if (!post)
-    return (
-      <div className="error" style={{ color: "white", fontSize: "1.25rem" }}>
-        Post not found
-      </div>
-    );
+  if (loading) return <div className="es-status">Loading post…</div>;
+  if (error) return <div className="es-status">Error: {error}</div>;
+  if (!post) return <div className="es-status">Post not found</div>;
 
   return (
-    <article className="post-content" style={{ color: "white" }}>
-      <h1
-        className="post-title"
-        style={{ color: "white", fontSize: "3rem" }} // Bigger title
-      >
-        {post.title}
-      </h1>
-      <div className="post-meta" style={{ color: "#cccccc" }}>
+    <article className="post-content">
+      <Link to="/blog" className="es-link" style={{ fontSize: "0.85rem" }}>
+        ← all posts
+      </Link>
+      <h1 className="post-title">{post.title}</h1>
+      <div className="post-meta">
         {post.created_at && (
           <time className="post-date" dateTime={post.created_at}>
             {new Date(post.created_at).toLocaleDateString("en-US", {

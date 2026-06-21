@@ -1,6 +1,6 @@
-import React, { useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
-import "./hangman.css"; 
+import { useState, FormEvent } from "react";
+import PageShell from "../components/PageShell";
+import "./hangman.css";
 
 import words from "./wordlist.json";
 
@@ -15,13 +15,11 @@ const hangImages = [
 ];
 const MAX_WRONG_GUESSES = hangImages.length - 1;
 
-// --- Helper Functions ---
 const getRandomWord = () => {
   const randomIndex = Math.floor(Math.random() * words.length);
   return words[randomIndex].toUpperCase();
 };
 
-// --- Component ---
 function HangMan() {
   const [word, setWord] = useState<string>(getRandomWord());
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
@@ -64,50 +62,54 @@ function HangMan() {
     .join(" ");
 
   return (
-    <div className="hangman-container">
-      <div className="game-area">
+    <PageShell backTo="/" backLabel="home">
+      <p className="es-eyebrow">game</p>
+      <h1 className="es-title">Hangman</h1>
+
+      <div className="hangman-game">
         <img
           src={hangImages[wrongGuesses]}
           alt={`Hangman state with ${wrongGuesses} wrong guesses`}
           className="hangman-image"
         />
-        <div className="game-info">
-          <p className="game-status">
+
+        <div className="hangman-info">
+          <p className="hangman-status">
             {isGameOver
               ? isWin
-                ? "Congratulations, You Won!"
-                : "Game Over!"
+                ? "Congratulations, you won!"
+                : "Game over!"
               : "Guess the word:"}
           </p>
-          <h1
-            className={`word-display ${isWin ? "win" : ""} ${
-              isLoss ? "loss" : ""
+          <p
+            className={`hangman-word ${isWin ? "is-win" : ""} ${
+              isLoss ? "is-loss" : ""
             }`}
           >
             {isLoss ? word : displayedWord}
-          </h1>
+          </p>
 
           {!isGameOver && (
-            <form onSubmit={handleSubmit} className="guess-form">
+            <form onSubmit={handleSubmit} className="hangman-form">
               <input
                 type="text"
                 maxLength={1}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="letter-input"
+                className="es-input hangman-letter"
                 autoFocus
               />
-              <button type="submit" className="form-button-king">
+              <button type="submit" className="es-btn es-btn--solid">
                 Guess
               </button>
             </form>
           )}
 
-          <div className="guessed-letters">
+          <div className="hangman-guessed">
             <p>Guessed:</p>
-            <div className="letter-chips">
+            <div className="hangman-chips">
               {[...guessedLetters].sort().map((letter) => (
-                <span key={letter} className="letter-chip">
+                <span key={letter} className="es-tag">
                   {letter}
                 </span>
               ))}
@@ -116,15 +118,10 @@ function HangMan() {
         </div>
       </div>
 
-      <div className="game-controls">
-        <button onClick={restartGame} className="form-button-king primary">
-          New Game
-        </button>
-        <Link to="/" className="form-button-king">
-          Back to Home
-        </Link>
-      </div>
-    </div>
+      <button onClick={restartGame} className="es-btn es-btn--solid">
+        New Game
+      </button>
+    </PageShell>
   );
 }
 

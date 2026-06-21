@@ -1,12 +1,11 @@
 import { Outlet } from "react-router-dom";
+import PageShell from "../components/PageShell";
 
 function BlogLayout() {
   return (
-    <div className="page-background">
-      <main className="blog-content">
-        <Outlet />
-      </main>
-    </div>
+    <PageShell centered={false} backTo="/" backLabel="home" show3D>
+      <Outlet />
+    </PageShell>
   );
 }
 

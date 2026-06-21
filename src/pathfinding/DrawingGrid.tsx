@@ -1,10 +1,8 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Grid from "./Grid";
+import PageShell from "../components/PageShell";
+import "./pathfinding.css";
 
-const theme = {
-  background: "#232323",
-  textColor: "#EFECD7",
-};
 type Mode = "wall" | "erase" | "start" | "goal";
 
 const ROWS = 40;
@@ -140,61 +138,42 @@ const DrawingGrid: React.FC = () => {
     setPath(new Set());
   }, []);
 
-  const containerStyle: React.CSSProperties = {
-    backgroundColor: theme.background,
-    color: theme.textColor,
-    padding: 16,
-    minHeight: "100vh",
-  };
-  const buttonStyle: React.CSSProperties = {
-    background: "#3A3A3A",
-    color: theme.textColor,
-    border: "none",
-    borderRadius: 4,
-    padding: "8px 12px",
-    marginRight: 8,
-    cursor: "pointer",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-    fontSize: 14,
-  };
-
   return (
-    <div style={containerStyle}>
-      <div style={{ marginBottom: 8 }}>
-        <button style={buttonStyle} onClick={() => setMode("wall")}>
-          Draw Walls
-        </button>
-        <button style={buttonStyle} onClick={() => setMode("erase")}>
-          Erase Walls
-        </button>
-        <button style={buttonStyle} onClick={() => setMode("start")}>
-          Place Start
-        </button>
-        <button style={buttonStyle} onClick={() => setMode("goal")}>
-          Place Goal
-        </button>
-        <button style={buttonStyle} onClick={findPath}>
-          Find Path
-        </button>
-        <button style={buttonStyle} onClick={resetAll}>
-          Reset
-        </button>
-        <span style={{ marginLeft: 16 }}>Mode: {mode}</span>
+    <PageShell centered={false} backTo="/" backLabel="home">
+      <p className="es-eyebrow">algorithm</p>
+      <h1 className="es-title" style={{ textAlign: "left" }}>
+        Pathfinding Visualizer
+      </h1>
+      <p className="es-subtitle" style={{ textAlign: "left" }}>
+        Draw walls, place a start and goal, then find the shortest path.
+      </p>
+
+      <div className="path-controls">
+        <button className="es-btn" onClick={() => setMode("wall")}>Draw Walls</button>
+        <button className="es-btn" onClick={() => setMode("erase")}>Erase Walls</button>
+        <button className="es-btn" onClick={() => setMode("start")}>Place Start</button>
+        <button className="es-btn" onClick={() => setMode("goal")}>Place Goal</button>
+        <button className="es-btn es-btn--solid" onClick={findPath}>Find Path</button>
+        <button className="es-btn" onClick={resetAll}>Reset</button>
+        <span className="path-mode">Mode: {mode}</span>
       </div>
-      <Grid
-        rows={ROWS}
-        cols={COLS}
-        cellSize={CELL_SIZE}
-        walls={walls}
-        start={start}
-        goal={goal}
-        visited={visited}
-        path={path}
-        onCellMouseDown={handleMouseDown}
-        onCellMouseEnter={handleMouseEnter}
-        onMouseUp={stopDrawing}
-      />
-    </div>
+
+      <div className="path-grid-scroll">
+        <Grid
+          rows={ROWS}
+          cols={COLS}
+          cellSize={CELL_SIZE}
+          walls={walls}
+          start={start}
+          goal={goal}
+          visited={visited}
+          path={path}
+          onCellMouseDown={handleMouseDown}
+          onCellMouseEnter={handleMouseEnter}
+          onMouseUp={stopDrawing}
+        />
+      </div>
+    </PageShell>
   );
 };
 

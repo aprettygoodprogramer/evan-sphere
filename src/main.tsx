@@ -1,9 +1,11 @@
 import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./landingPage/App.tsx";
+import About from "./about/About.tsx";
+import Contact from "./contact/Contact.tsx";
 import HangMan from "./HangMan/hangman.tsx";
 import SpaceshipGamea from "./GamePages/spaceshipgameFile.tsx";
 import TowerDefence from "./GamePages/towerdefencepage.tsx";
@@ -18,15 +20,30 @@ import ProceduralContent from "./ProceduralContentGenerator/ProceduralContent.ts
 const TimeManager = lazy(() => import("./TimeManager/TimeManagerPage.tsx"));
 const DrawingGrid = lazy(() => import("./pathfinding/DrawingGrid.tsx"));
 
+const NotFound = () => (
+  <div className="es-page">
+    <div className="es-grid-static" />
+    <div className="es-content">
+      <h1 className="es-title">404</h1>
+      <p className="es-subtitle">This page drifted off the grid.</p>
+      <a href="/" className="es-link">← back home</a>
+    </div>
+  </div>
+);
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: (
-      <div>
-        <h1>404 Not Found :(</h1>
-      </div>
-    ),
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
   {
     path: "/hangman",
@@ -43,7 +60,7 @@ const router = createBrowserRouter([
   {
     path: "/TimeManager",
     element: (
-      <Suspense fallback={<div>Loading Time Manager...</div>}>
+      <Suspense fallback={<div className="es-status">Loading…</div>}>
         <TimeManager />
       </Suspense>
     ),
@@ -75,7 +92,7 @@ const router = createBrowserRouter([
   {
     path: "/pathfinding",
     element: (
-      <Suspense fallback={<div>Loading Drawing Grid...</div>}>
+      <Suspense fallback={<div className="es-status">Loading…</div>}>
         <DrawingGrid />
       </Suspense>
     ),

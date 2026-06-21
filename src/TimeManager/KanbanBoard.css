@@ -1,132 +1,82 @@
-/* 
-  Refactored styles for the Task Manager (Kanban Board)
-  - Aligned with the "space-tech" theme from the portfolio.
-  - Uses CSS variables for consistency.
-*/
+/* Task Manager (kanban) — B&W, on top of the global theme */
 
-/* 1. CSS Variables (for clarity and consistency) */
-:root {
-  --dark-blue: #0b2545;
-  --mid-blue: #13315c;
-  --light-blue: #134074;
-  --accent-gold: #fdc500;
-  --text-light: #e2e8f0;
-  --text-muted: #94a3b8;
-  --bg-glass: rgba(19, 49, 92, 0.5);
-  --border-color: rgba(253, 197, 0, 0.15);
+.kanban-wrap {
+  width: 100%;
+  max-width: 64rem;
 }
 
-/* 2. Main Layout & Background */
-.task-manager-container {
-  /* Use this class on your main container div */
-  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
-  min-height: 100vh;
-  padding: 2rem;
-  font-family: "Inter", sans-serif;
-}
-
-/* 3. Input Area for New Tasks */
 .input-container {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
 }
 
-.task-input {
-  /* Style for the <input> element */
-  flex-grow: 1;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  background-color: rgba(11, 37, 69, 0.7);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  color: var(--text-light);
-  outline: none;
-  transition: border-color 0.3s ease;
+.input-container .es-input {
+  flex: 1 1 14rem;
 }
 
-.task-input:focus {
-  border-color: var(--accent-gold);
-}
-
-.add-task-button {
-  /* Style for the "Add Task" <button> */
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 2px solid var(--accent-gold);
-  background-color: var(--accent-gold);
-  color: var(--dark-blue);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.add-task-button:hover {
-  background-color: transparent;
-  color: var(--accent-gold);
-}
-
-/* 4. Kanban Board & Columns */
 .kanban-board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
   align-items: start;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  background: var(--bg-glass);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  min-height: 60vh;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--es-border);
+  min-height: 50vh;
 }
 
 .column-title {
-  /* Replaces .column h3 */
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--accent-gold);
+  font-family: var(--es-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--es-black);
+  opacity: 0.85;
   text-align: center;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--es-border);
 }
 
-/* 5. Individual Task Cards */
 .task {
-  padding: 1rem;
-  background-color: var(--light-blue);
-  border-radius: 8px;
-  color: var(--text-light);
+  padding: 0.85rem 1rem;
+  background: #ffffff;
+  border: 1px solid var(--es-black);
+  color: var(--es-black);
   cursor: grab;
-  border-left: 4px solid var(--accent-gold);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
+  font-family: var(--es-font);
+  font-size: 1rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .task:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0 0 0 / 0.08);
 }
 
 .task:active {
   cursor: grabbing;
 }
 
-/* Add this class with JS when a task is being dragged */
 .task.dragging {
-  cursor: grabbing;
   opacity: 0.8;
-  transform: rotate(3deg) scale(1.05);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transform: rotate(2deg) scale(1.03);
+  box-shadow: 0 10px 24px rgba(0 0 0 / 0.12);
+}
+
+.task-time {
+  font-family: var(--es-mono);
+  font-size: 0.8rem;
+  opacity: 0.6;
 }

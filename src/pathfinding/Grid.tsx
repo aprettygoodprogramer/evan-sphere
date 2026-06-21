@@ -1,10 +1,5 @@
 import React from "react";
 
-const theme = {
-  background: "#232323",
-  textColor: "#EFECD7",
-};
-
 export interface GridProps {
   rows: number;
   cols: number;
@@ -36,17 +31,23 @@ const Grid: React.FC<GridProps> = ({
     display: "grid",
     gridTemplateRows: `repeat(${rows}, ${cellSize}px)`,
     gridTemplateColumns: `repeat(${cols}, ${cellSize}px)`,
-    width: "100%",
-    height: "100%",
-    backgroundColor: theme.background,
+    width: "max-content",
+    backgroundColor: "#ffffff",
     userSelect: "none",
   };
 
   const cellBase: React.CSSProperties = {
     width: cellSize,
     height: cellSize,
-    border: "1px solid #444",
+    border: "1px solid #e5e7eb",
     boxSizing: "border-box",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontFamily: "var(--es-mono)",
+    fontSize: 10,
+    fontWeight: 700,
+    color: "#ffffff",
   };
 
   const cells: JSX.Element[] = [];
@@ -60,19 +61,33 @@ const Grid: React.FC<GridProps> = ({
       const isPath = path.has(key);
 
       let bg = "transparent";
-      if (isWall) bg = "black";
-      else if (isPath) bg = "yellow";
-      else if (isVisited) bg = "lightblue";
-      else if (isStart) bg = "green";
-      else if (isGoal) bg = "blue";
+      let label = "";
+      let boxShadow: string | undefined;
+
+      if (isWall) {
+        bg = "#000000";
+      } else if (isStart) {
+        bg = "#000000";
+        label = "S";
+      } else if (isGoal) {
+        bg = "#000000";
+        label = "G";
+      } else if (isPath) {
+        bg = "#000000";
+        boxShadow = "inset 0 0 0 3px #ffffff";
+      } else if (isVisited) {
+        bg = "#e5e7eb";
+      }
 
       cells.push(
         <div
           key={key}
-          style={{ ...cellBase, backgroundColor: bg }}
+          style={{ ...cellBase, backgroundColor: bg, boxShadow }}
           onMouseDown={() => onCellMouseDown(r, c)}
           onMouseEnter={() => onCellMouseEnter(r, c)}
-        />
+        >
+          {label}
+        </div>
       );
     }
   }

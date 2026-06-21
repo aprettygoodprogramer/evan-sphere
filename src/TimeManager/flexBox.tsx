@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./KanbanBoard.css";
 
 interface Task {
@@ -13,7 +13,7 @@ const KanbanBoard: React.FC = () => {
   const [finished, setFinished] = useState<Task[]>([]);
   const [taskContent, setTaskContent] = useState<string>("");
   const [taskTime, setTaskTime] = useState<string>("");
-  const [currTab, setCurrTab] = useState<number>(0);
+
   const addTask = () => {
     if (taskContent.trim() && taskTime.trim()) {
       setTodo((prev) => [
@@ -55,7 +55,7 @@ const KanbanBoard: React.FC = () => {
     tasks.map((task) => (
       <div
         key={task.id}
-        className="task-manager-task"
+        className="task"
         draggable
         onDragStart={(e) => handleDragStart(e, task, column)}
       >
@@ -65,22 +65,22 @@ const KanbanBoard: React.FC = () => {
     ));
 
   return (
-    <div>
+    <div className="kanban-wrap">
       <div className="input-container">
         <input
           type="text"
           placeholder="Task name"
           value={taskContent}
           onChange={(e) => setTaskContent(e.target.value)}
-          className="github-button"
+          className="es-input"
         />
         <input
           type="time"
           value={taskTime}
           onChange={(e) => setTaskTime(e.target.value)}
-          className="github-button"
+          className="es-input"
         />
-        <button onClick={addTask} className="github-button">
+        <button onClick={addTask} className="es-btn es-btn--solid">
           Add Task
         </button>
       </div>
@@ -90,7 +90,7 @@ const KanbanBoard: React.FC = () => {
           onDrop={(e) => handleDrop(e, setTodo)}
           onDragOver={allowDrop}
         >
-          <h3>TODO</h3>
+          <h3 className="column-title">Todo</h3>
           {renderTasks(todo, "todo")}
         </div>
         <div
@@ -98,7 +98,7 @@ const KanbanBoard: React.FC = () => {
           onDrop={(e) => handleDrop(e, setInProgress)}
           onDragOver={allowDrop}
         >
-          <h3>In Progress</h3>
+          <h3 className="column-title">In Progress</h3>
           {renderTasks(inProgress, "inProgress")}
         </div>
         <div
@@ -106,7 +106,7 @@ const KanbanBoard: React.FC = () => {
           onDrop={(e) => handleDrop(e, setFinished)}
           onDragOver={allowDrop}
         >
-          <h3>Finished</h3>
+          <h3 className="column-title">Finished</h3>
           {renderTasks(finished, "finished")}
         </div>
       </div>

@@ -1,0 +1,26 @@
+/* Pathfinding visualizer — B&W, on top of the global theme */
+
+.path-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+}
+
+.path-mode {
+  font-family: var(--es-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--es-black);
+  opacity: 0.6;
+  margin-left: 0.5rem;
+}
+
+.path-grid-scroll {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--es-border);
+  background: #ffffff;
+  padding: 4px;
+}
